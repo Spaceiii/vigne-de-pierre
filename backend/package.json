@@ -1,0 +1,25 @@
+{
+  "name": "pierredevigne-backend",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Timothée MEYER",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.41.0",
+    "express": "^5.1.0",
+    "pg": "^8.14.1",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.11",
+    "drizzle-kit": "^0.30.6",
+    "tsx": "^4.19.3"
+  }
+}

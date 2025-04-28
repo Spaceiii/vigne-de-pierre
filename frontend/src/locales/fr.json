@@ -1,0 +1,21 @@
+{
+  "brand": "Pierre de Vigne",
+  "brand_family": "Famille Bannwarth d'Eguisheim",
+  "notFound": {
+    "title": "404",
+    "message": "La page que vous recherchez n'existe pas."
+  },
+  "error": {
+    "error": "Erreur",
+    "warning": "Attention",
+    "info": "Info",
+    "close": "Fermer"
+  },
+  "logo": "Logo",
+  "home": {
+    "header": {
+      "alt": "Vignes",
+      "see_more": "Découvrir notre savoir-faire et nos vins"
+    }
+  }
+}
