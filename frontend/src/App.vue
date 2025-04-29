@@ -5,6 +5,7 @@ import { RouterView } from 'vue-router'
 import { useMessageStore } from "@/stores/message.ts";
 import { useI18n } from 'vue-i18n'
 import NavBar from "@/components/Navbar/NavBar.vue";
+import Footer from "@/components/Footer/Footer.vue";
 
 const { t } = useI18n()
 const messageStore = useMessageStore()
@@ -26,8 +27,8 @@ function removeMessage(id: number) {
   <NavBar />
 
   <div class="app">
-
     <RouterView />
+
     <div class="debug-container" v-if="messageStore.hasMessage">
       <template v-for="message in messageStore.messages" :key="message.id">
         <div class="debug" :id="'debug-' + message.id" :class="message.type">
@@ -48,11 +49,31 @@ function removeMessage(id: number) {
         </div>
       </template>
     </div>
+
+    <div class="bottom-footer">
+      <Footer />
+    </div>
   </div>
+
+
 </template>
 
 
 <style scoped>
+.app {
+  position: relative;
+  box-sizing: border-box;
+  padding-bottom: var(--footer-spacing);
+  min-height: calc(100vh - var(--footer-spacing));
+}
+
+.bottom-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 .debug-container {
   position: fixed;
   bottom: 20px;

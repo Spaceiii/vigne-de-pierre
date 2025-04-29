@@ -21,29 +21,39 @@ function scrollToSection(sectionId: string) {
       <h2>{{ t('brand_family') }}</h2>
 
       <div class="more" @click="scrollToSection('after-header')">
-        <img src="@/assets/arrow_down.svg" alt="arrow down" />
+        <img src="../assets/utils/arrow_down.svg" alt="arrow down" />
         <p>{{ t('home.header.see_more') }}</p>
       </div>
     </header>
 
-    <div class="section-grid" id="after-header">
-      <SectionItem>
-        <template #title>{{ t('home.section_1.title') }}</template>
-        <template #image><img src="@/assets/vigne-landing-page.jpg" alt="Logo"></template>
-      </SectionItem>
-      <SectionItem>
-        <template #title>{{ t('home.section_2.title') }}</template>
-        <template #image><img src="@/assets/vigne-landing-page.jpg" alt="Logo"></template>
-      </SectionItem>
-      <SectionItem>
-        <template #title>{{ t('home.section_3.title') }}</template>
-        <template #image><img src="@/assets/vigne-landing-page.jpg" alt="Logo"></template>
-      </SectionItem>
-      <SectionItem>
-        <template #title>{{ t('home.section_4.title') }}</template>
-        <template #image><img src="@/assets/vigne-landing-page.jpg" alt="Logo"></template>
-      </SectionItem>
+    <div class="section" id="after-header">
+      <h2 class="section-title">{{ t('home.section_title') }}</h2>
+
+      <div class="section-grid">
+        <SectionItem to-name="domain">
+          <template #title>{{ t('home.section_1.title') }}</template>
+          <template #image><img src="@/assets/domaine-generique.jpg" alt="Logo"></template>
+        </SectionItem>
+        <SectionItem to-name="wine">
+          <template #title>{{ t('home.section_2.title') }}</template>
+          <template #image><img src="@/assets/vins-generique.jpg" alt="Logo"></template>
+        </SectionItem>
+        <SectionItem to-name="accommodation">
+          <template #title>{{ t('home.section_3.title') }}</template>
+          <template #image><img src="@/assets/hebergement-generique.jpg" alt="Logo"></template>
+        </SectionItem>
+        <SectionItem to-name="contact">
+          <template #title>{{ t('home.section_4.title') }}</template>
+          <template #image><img src="@/assets/contact-generique.jpg" alt="Logo"></template>
+        </SectionItem>
+      </div>
     </div>
+
+    <section class="section">
+      <h2 class="section-title">{{ t('home.visit') }}</h2>
+
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d666.8545888532313!2d7.304655969673287!3d48.044259594806256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479164f6f13a612d%3A0xbc49c80d43a98c24!2sDomaine%20Pierre%20De%20Vigne!5e0!3m2!1sfr!2sfr!4v1745918356506!5m2!1sfr!2sfr" width="900" height="500" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"/>
+    </section>
   </main>
 </template>
 
@@ -100,5 +110,18 @@ header .more img {
   padding: 2rem 10rem;
   justify-items: center;
   align-content: center;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin: 2rem;
 }
 </style>

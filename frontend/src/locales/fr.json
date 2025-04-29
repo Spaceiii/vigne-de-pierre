@@ -3,7 +3,8 @@
   "brand_family": "Famille Bannwarth d'Eguisheim",
   "notFound": {
     "title": "404",
-    "message": "La page que vous recherchez n'existe pas."
+    "message": "La page que vous recherchez n'existe pas.",
+    "back": "Retour à l'accueil"
   },
   "error": {
     "error": "Erreur",
@@ -12,10 +13,77 @@
     "close": "Fermer"
   },
   "logo": "Logo",
+  "nav": {
+    "home": "Accueil",
+    "domain": "Le domaine",
+    "wines": "Nos vins",
+    "accommodation": "Hébergement",
+    "contact": "Contact"
+  },
   "home": {
     "header": {
       "alt": "Vignes",
       "see_more": "Découvrir notre savoir-faire et nos vins"
+    },
+    "section_title": "Découvrez un savoir-faire d'exception au coeur de l'Alsace",
+    "section_1": {
+      "title": "Notre domaine",
+      "description": "Le domaine Pierre de Vigne est situé à Eguisheim, au coeur de l'Alsace. Nous cultivons nos vignes avec passion et respect de l'environnement."
+    },
+    "section_2": {
+      "title": "Nos vins",
+      "description": "Découvrez notre gamme de vins d'Alsace, élaborés avec passion et savoir-faire."
+    },
+    "section_3": {
+      "title": "Hébergement",
+      "description": "Nous accueillons les campings-caristes dans notre domaine. Profitez de la nature et de la tranquillité des vignes."
+    },
+    "section_4": {
+      "title": "Contact",
+      "description": "N'hésitez pas à nous contacter pour toute question ou demande de réservation."
+    },
+    "visit": "Venez découvrir notre domaine"
+  },
+  "domain_page": {
+    "title": "Le domaine Pierre de Vigne",
+    "philo": {
+      "title": "Issus des terres alsaciennes",
+      "quote": "Tout ce que la nature a de beau, elle le communique au vin. Tout ce que l’homme a de bon, il le transmet au vin.",
+      "alt": "vignes alsaciennes",
+      "author": "Louis Orizet (1913-1998), ingénieur agronome de formation et écrivain",
+      "content_0": "Le domaine Pierre de Vigne est situé à Éguisheim, dans le berceau du <strong>vignoble alsacien</strong>. Il est exploité par la <strong>famille Bannwarth</strong>, et regroupe une superficie de 8 ha dont 2 Grands Crus : le <strong>Eichberg</strong> et le <strong>Pfersigberg</strong>. Aujourd’hui, nos terroirs, la Pierre de Vigne, et l’arrivée de Pierre, notre jeune vigneron, sont à l’origine de vins riches en émotions.",
+      "content_1": "Être vigneron aujourd'hui, c’est aussi et avant tout être paysan, paysan qui aime travailler la terre.<br><br>Dame Nature nous a offert un trésor, nous devons la respecter. Ainsi, nous travaillons nos vignes dans le respect de l’environnement et de leur rythme biologique. Tout au long du processus, nos applications sont raisonnées et nos travaux sont réfléchis pour façonner au mieux le reflet de nos terroirs.<br><br>Déguster, rêver, mais constamment vouloir partager… c’est là, l’essentiel."
+    },
+    "vignes": {
+      "title": "Éguisheim : berceau du vignoble alsacien",
+      "alt": "Main qui touche les vignes",
+      "content_0": "Notre vignoble s’étend sur une surface de 8 ha. L’essentiel de notre vignoble se situe à Éguisheim, ancienne cité papale, aux riches terroirs. En effet, Éguisheim a introduit la vigne au temps des Romains. Rapidement la qualité de son vin l’a rendu célèbre dans le monde. Certains clos réputés ont fait leur apparition : le <strong>Eichberg</strong> et le <strong>Pfersigberg</strong>. Aujourd’hui ces lieux dits font partie des <strong>51 Grands Crus alsaciens</strong> qui complètent une mosaïque de terroirs uniques."
+    },
+    "cave": {
+      "title": "La cave : la vinification est une prolongation du travail effectué à la vigne.",
+      "alt": "Cave à vin",
+      "content_0": "Le raisin un fois récolté va être l’essence même du vin. Sa qualité va se caractériser par les terroirs sélectionnés et les soins apportés à chaque moment. Le pressurage doux et long permet d’obtenir des vins francs et aromatiques. La fermentation se fait naturellement et l’élevage sur lies reste de rigueur. Ces procédés associés à nos terroirs sont la marque de fabrique du domaine : <strong>l’élégance et la finesse.</strong>"
+    },
+    "caveau": {
+      "title": "Le caveau",
+      "alt": "verre Pierre de Vigne",
+      "content_0": "Notre caveau de dégustation est un lieu convivial qui vient vous présenter l’aboutissement d’un travail. C’est à travers ces verres de vin que l’on peut apprécier la vigilance du vigneron, le sourire du vendangeur, l’effort du pressureur et la passion du caviste.<br><br><strong>Horaires d’ouvertures</strong> : du lundi au samedi de 8 h à 12 h et de 13 h 30 à 19 h.<br>Jour de fermeture : dimanche<br><br><strong>Accueil de groupes</strong> : jusqu’à 70 personnes visite de la vieille ville, visite du musée et dégustation de vins avec kougelhof. Possibilité de découvrir également le sentier viticole."
     }
+  },
+  "wine": {
+    "title": "Un vin d'exception",
+    "description": "Découvrez notre gamme de vins d'Alsace, élaborés avec passion et savoir-faire."
+  },
+  "accommodation": {
+    "title": "Nous accueillons les campings-caristes !",
+    "description": "Nous accueillons les campings-caristes dans notre domaine. Profitez de la nature et de la tranquillité des vignes."
+  },
+  "contact": {
+    "title": "Contactez-nous !",
+    "on_place": "Sur place"
+  },
+
+  "footer": {
+    "prevention": "L'abus d'alcool est dangereux pour la santé. À consommer avec modération."
   }
 }

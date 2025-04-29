@@ -1,11 +1,18 @@
 :root {
   --primary-bg-start: #485457;
   --primary-bg-end: #3a4447;
+  --footer-spacing: 6rem;
+  --footer-height: 3rem;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
+  min-height: 100vh;
+}
+
+html {
+  min-height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
