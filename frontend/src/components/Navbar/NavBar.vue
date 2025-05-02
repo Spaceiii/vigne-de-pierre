@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-#navbar .left, #navbar .right {
+#navbar .left, #navbar .online {
   display: flex;
   align-items: center;
 }

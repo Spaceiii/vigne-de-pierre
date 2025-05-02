@@ -18,7 +18,7 @@ const { t } = useI18n()
   padding: 1rem;
   background: linear-gradient(to right, var(--primary-bg-start), var(--primary-bg-end));
   color: white;
-  font-size: 1rem;
+  font-size: .7rem;
   height: var(--footer-height);
 }
 </style>
