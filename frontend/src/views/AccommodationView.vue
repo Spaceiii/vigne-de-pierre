@@ -8,14 +8,13 @@ const { t } = useI18n()
     <h1>{{ t('accommodation.title') }}</h1>
 
     <div class="content">
-      <img src="@/assets/hebergement.jpg" :alt="t('accommodation.alt')"/>
+      <img src="@/assets/hebergement.jpg" :alt="t('accommodation.alt')" />
 
       <div>
         <h2>{{ t('accommodation.subtitle') }}</h2>
 
-        <p v-html="t('accommodation.content')"/>
+        <p v-html="t('accommodation.content')" />
       </div>
-
     </div>
   </section>
 </template>

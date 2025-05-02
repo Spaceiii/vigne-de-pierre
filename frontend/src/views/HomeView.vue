@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import SectionItem from "@/components/Home/SectionItem.vue";
+import SectionItem from '@/components/Home/SectionItem.vue'
 
 const { t } = useI18n()
 
@@ -32,19 +32,19 @@ function scrollToSection(sectionId: string) {
       <div class="section-grid">
         <SectionItem to-name="domain">
           <template #title>{{ t('home.section_1.title') }}</template>
-          <template #image><img src="@/assets/domaine-generique.jpg" alt="Logo"></template>
+          <template #image><img src="@/assets/domaine-generique.jpg" alt="Logo" /></template>
         </SectionItem>
         <SectionItem to-name="wine">
           <template #title>{{ t('home.section_2.title') }}</template>
-          <template #image><img src="@/assets/vins-generique.jpg" alt="Logo"></template>
+          <template #image><img src="@/assets/vins-generique.jpg" alt="Logo" /></template>
         </SectionItem>
         <SectionItem to-name="accommodation">
           <template #title>{{ t('home.section_3.title') }}</template>
-          <template #image><img src="@/assets/hebergement-generique.jpg" alt="Logo"></template>
+          <template #image><img src="@/assets/hebergement-generique.jpg" alt="Logo" /></template>
         </SectionItem>
         <SectionItem to-name="contact">
           <template #title>{{ t('home.section_4.title') }}</template>
-          <template #image><img src="@/assets/contact-generique.jpg" alt="Logo"></template>
+          <template #image><img src="@/assets/contact-generique.jpg" alt="Logo" /></template>
         </SectionItem>
       </div>
     </div>
@@ -52,7 +52,15 @@ function scrollToSection(sectionId: string) {
     <section class="section">
       <h2 class="section-title">{{ t('home.visit') }}</h2>
 
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d666.8545888532313!2d7.304655969673287!3d48.044259594806256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479164f6f13a612d%3A0xbc49c80d43a98c24!2sDomaine%20Pierre%20De%20Vigne!5e0!3m2!1sfr!2sfr!4v1745918356506!5m2!1sfr!2sfr" width="900" height="500" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"/>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d666.8545888532313!2d7.304655969673287!3d48.044259594806256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479164f6f13a612d%3A0xbc49c80d43a98c24!2sDomaine%20Pierre%20De%20Vigne!5e0!3m2!1sfr!2sfr!4v1745918356506!5m2!1sfr!2sfr"
+        width="900"
+        height="500"
+        style="border: 0"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      />
     </section>
   </main>
 </template>
@@ -62,7 +70,7 @@ header {
   width: 100%;
   height: 85vh;
   max-height: 100vh;
-  background: url("@/assets/vigne-landing-page.jpg") center/cover no-repeat;
+  background: url('@/assets/vigne-landing-page.jpg') center/cover no-repeat;
 
   display: flex;
   flex-direction: column;
@@ -92,7 +100,7 @@ header .more {
   justify-content: center;
   bottom: 20px;
   background: var(--primary-bg-start);
-  padding: .1rem 1rem;
+  padding: 0.1rem 1rem;
   border-radius: 1rem;
   cursor: pointer;
 }

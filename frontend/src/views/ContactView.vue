@@ -29,16 +29,29 @@ const { t } = useI18n()
           </ul>
 
           <router-link to="/" class="reservation">{{ t('contact.reservation') }}</router-link>
-
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d666.8545888532313!2d7.304655969673287!3d48.044259594806256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479164f6f13a612d%3A0xbc49c80d43a98c24!2sDomaine%20Pierre%20De%20Vigne!5e0!3m2!1sfr!2sfr!4v1745934471462!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d666.8545888532313!2d7.304655969673287!3d48.044259594806256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479164f6f13a612d%3A0xbc49c80d43a98c24!2sDomaine%20Pierre%20De%20Vigne!5e0!3m2!1sfr!2sfr!4v1745934471462!5m2!1sfr!2sfr"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
       <div class="online">
         <h2>{{ t('contact.online') }}</h2>
 
         <div class="info">
-          <p>{{ t('contact.phone') }} : <a href="tel:0389413248">03&nbsp;89&nbsp;41&nbsp;32&nbsp;48</a></p>
-          <p>{{ t('contact.email') }} : <a href="mailto:vignedepierre@gmail.com">vignedepierre@gmail.com</a></p>
+          <p>
+            {{ t('contact.phone') }} :
+            <a href="tel:0389413248">03&nbsp;89&nbsp;41&nbsp;32&nbsp;48</a>
+          </p>
+          <p>
+            {{ t('contact.email') }} :
+            <a href="mailto:vignedepierre@gmail.com">vignedepierre@gmail.com</a>
+          </p>
         </div>
       </div>
     </div>
@@ -72,7 +85,8 @@ h2 {
   max-width: 1200px;
 }
 
-.left, .online {
+.left,
+.online {
   flex: 1;
   padding: 1rem;
 }
@@ -86,7 +100,7 @@ h2 {
 
 .on_place p {
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .on_place .text-box {
@@ -107,7 +121,7 @@ h2 {
 }
 
 .online .info p {
-  margin: 0 0 .5rem;
+  margin: 0 0 0.5rem;
 }
 
 .reservation {
@@ -115,8 +129,8 @@ h2 {
   display: block;
   width: max-content;
   color: white;
-  padding: .5rem 1rem;
-  border-radius: .5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   text-decoration: none;
   font-size: 1.2rem;
   margin: 1.5rem auto;

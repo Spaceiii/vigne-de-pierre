@@ -42,5 +42,3 @@ const { t } = useI18n()
   font-size: 1.2rem;
 }
 </style>
-
-

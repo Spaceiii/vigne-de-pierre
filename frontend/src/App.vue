@@ -2,10 +2,10 @@
 import '@/assets/global.css'
 
 import { RouterView } from 'vue-router'
-import { useMessageStore } from "@/stores/message.ts";
+import { useMessageStore } from '@/stores/message.ts'
 import { useI18n } from 'vue-i18n'
-import NavBar from "@/components/Navbar/NavBar.vue";
-import Footer from "@/components/Footer/Footer.vue";
+import NavBar from '@/components/Navbar/NavBar.vue'
+import Footer from '@/components/Footer/Footer.vue'
 
 const { t } = useI18n()
 const messageStore = useMessageStore()
@@ -32,8 +32,7 @@ function removeMessage(id: number) {
     <div class="debug-container" v-if="messageStore.hasMessage">
       <template v-for="message in messageStore.messages" :key="message.id">
         <div class="debug" :id="'debug-' + message.id" :class="message.type">
-
-        <h1>
+          <h1>
             <span v-if="message.type === 'info'">{{ t('error.info') }}</span>
             <span v-else-if="message.type === 'warning'">{{ t('error.warning') }}</span>
             <span v-else-if="message.type === 'error'">{{ t('error.error') }}</span>
@@ -45,7 +44,6 @@ function removeMessage(id: number) {
             :alt="t('error.close')"
             @click="removeMessage(message.id)"
           />
-
         </div>
       </template>
     </div>
@@ -54,10 +52,7 @@ function removeMessage(id: number) {
       <Footer />
     </div>
   </div>
-
-
 </template>
-
 
 <style scoped>
 .app {
@@ -100,14 +95,15 @@ function removeMessage(id: number) {
   justify-content: center;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   position: relative;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .debug-leave {
   transform: translateY(50px);
   opacity: 0;
 }
-
 
 .debug.info {
   background: linear-gradient(135deg, rgba(0, 0, 255, 0.85), rgba(0, 0, 200, 0.8));
@@ -139,6 +135,4 @@ function removeMessage(id: number) {
 .debug img:hover {
   opacity: 1;
 }
-
-
 </style>

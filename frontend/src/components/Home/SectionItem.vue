@@ -1,12 +1,12 @@
 <template>
   <div class="home-section">
-    <router-link :to="{name: toName}" v-if="toName">
+    <router-link :to="{ name: toName }" v-if="toName">
       <h1><slot name="title">Default title</slot></h1>
-      <slot name="image"><img src="@/assets/logo.png" alt="Logo"></slot>
+      <slot name="image"><img src="@/assets/logo.png" alt="Logo" /></slot>
     </router-link>
     <div v-else>
       <h1><slot name="title">Default title</slot></h1>
-      <slot name="image"><img src="@/assets/logo.png" alt="Logo"></slot>
+      <slot name="image"><img src="@/assets/logo.png" alt="Logo" /></slot>
     </div>
   </div>
 </template>
@@ -48,7 +48,6 @@
 </style>
 
 <script setup lang="ts">
-
 const { toName } = defineProps<{
   toName?: string
 }>()

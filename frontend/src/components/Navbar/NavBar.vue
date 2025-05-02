@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {useI18n} from "vue-i18n";
-import {computed} from "vue";
-import {useRoute} from "vue-router";
+import { useI18n } from 'vue-i18n'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
 const { t } = useI18n()
 
@@ -17,7 +17,7 @@ const needNav = computed(() => {
     <nav id="navbar">
       <div class="left">
         <router-link to="/">
-          <img src="@/assets/logo.png" :alt="t('logo') + 'Pierre de vigne'">
+          <img src="@/assets/logo.png" :alt="t('logo') + 'Pierre de vigne'" />
           <h1>Pierre de vigne</h1>
         </router-link>
       </div>
@@ -27,14 +27,21 @@ const needNav = computed(() => {
       <router-link active-class="active" to="/">{{ t('nav.home') }}</router-link>
       <router-link active-class="active" to="/domain">{{ t('nav.domain') }}</router-link>
       <router-link active-class="active" to="/wine">{{ t('nav.wines') }}</router-link>
-      <router-link active-class="active" to="/accommodation">{{ t('nav.accommodation') }}</router-link>
+      <router-link active-class="active" to="/accommodation">{{
+        t('nav.accommodation')
+      }}</router-link>
       <router-link active-class="active" to="/contact">{{ t('nav.contact') }}</router-link>
     </nav>
   </div>
 </template>
 
 <style scoped>
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   line-height: 1.2;
   text-decoration: none;
@@ -56,7 +63,8 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-#navbar .left, #navbar .online {
+#navbar .left,
+#navbar .online {
   display: flex;
   align-items: center;
 }
@@ -106,10 +114,13 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 1rem;
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
-.sub-nav a:hover, .sub-nav a.active {
+.sub-nav a:hover,
+.sub-nav a.active {
   background-color: var(--primary-bg-start);
   color: white;
 }

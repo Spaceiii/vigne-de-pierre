@@ -13,7 +13,11 @@ const { t } = useI18n()
         <h3>{{ t('domain_page.philo.title') }}</h3>
         <p v-html="t('domain_page.philo.content_0')"></p>
 
-        <p class="quotes">&ldquo;{{ t('domain_page.philo.quote') }}&rdquo;<br><span class="author">- {{ t('domain_page.philo.author') }}</span></p>
+        <p class="quotes">
+          &ldquo;{{ t('domain_page.philo.quote') }}&rdquo;<br /><span class="author"
+            >- {{ t('domain_page.philo.author') }}</span
+          >
+        </p>
 
         <p v-html="t('domain_page.philo.content_1')"></p>
       </div>
@@ -101,14 +105,14 @@ article h3 {
 }
 
 .quotes {
-  quotes: "«" "»" "‹" "›";
-  padding: .5rem 1rem;
+  quotes: '«' '»' '‹' '›';
+  padding: 0.5rem 1rem;
   background: rgb(210, 210, 210);
 }
 
 .author {
   display: inline-block;
   font-style: italic;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 </style>
