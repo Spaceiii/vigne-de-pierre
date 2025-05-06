@@ -102,9 +102,9 @@ h6 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
   background: white;
   border-bottom: 1px solid var(--primary-bg-start);
+  height: 4rem;
 }
 
 .sub-nav a {

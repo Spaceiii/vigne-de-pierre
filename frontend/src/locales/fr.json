@@ -72,9 +72,36 @@
   },
   "wine": {
     "title": "Un vin d'exception",
+    "range": "Notre gamme de vins",
     "description": "Découvrez notre gamme de vins d'Alsace, élaborés avec passion et savoir-faire.",
     "pierreries": {
-      "title": "Les Pierreries"
+      "title": "Les Pierreries",
+      "wine_list": {
+        "wine_0": {
+          "name": "Pinot Blanc"
+        },
+        "wine_1": {
+          "name": "Pinot Gris"
+        },
+        "wine_2": {
+          "name": "Riesling"
+        },
+        "wine_3": {
+          "name": "Gewurztraminer"
+        },
+        "wine_4": {
+          "name": "Muscat"
+        },
+        "wine_5": {
+          "name": "Sylvaner"
+        },
+        "wine_6": {
+          "name": "Crémant d'Alsace"
+        },
+        "wine_7": {
+          "name": "Pinot Noir"
+        }
+      }
     },
     "pierres_precieuses": {
       "title": "Les Pierres Précieuses"
