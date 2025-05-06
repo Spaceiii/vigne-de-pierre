@@ -72,7 +72,19 @@
   },
   "wine": {
     "title": "Un vin d'exception",
-    "description": "Découvrez notre gamme de vins d'Alsace, élaborés avec passion et savoir-faire."
+    "description": "Découvrez notre gamme de vins d'Alsace, élaborés avec passion et savoir-faire.",
+    "pierreries": {
+      "title": "Les Pierreries"
+    },
+    "pierres_precieuses": {
+      "title": "Les Pierres Précieuses"
+    },
+    "grands_crus": {
+      "title": "Les Grands Crus"
+    },
+    "vendanges_tardives": {
+      "title": "Les Vendanges Tardives"
+    }
   },
   "accommodation": {
     "title": "Nous accueillons les campings-caristes !",
