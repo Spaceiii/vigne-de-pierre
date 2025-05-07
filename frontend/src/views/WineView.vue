@@ -12,7 +12,7 @@ import VendangesTardivesImage from '@/assets/wine_range/vendanges_tardives-big.j
 const activeSection = ref('')
 
 onMounted(() => {
-  const sections = document.querySelectorAll('li[id]')
+  const sections = document.querySelectorAll('.wine-range[id]')
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -21,7 +21,7 @@ onMounted(() => {
         }
       })
     },
-    { threshold: 0.5 },
+    { threshold: 0.6 },
   )
 
   sections.forEach((section) => observer.observe(section))
@@ -86,44 +86,56 @@ const scrollToSection = (id: string) => {
       <section>
         <WineRange
           id="pierreries"
-          title="Pierreries"
+          :title="t('wine.pierreries.title')"
           :image-src="PierreriesImage"
-          imageAlt="Pierreries"
-          description="Pierreries description"
+          :image-alt="t('wine.pierreries.title')"
+          :description="t('wine.pierreries.description')"
           :wineNames="[
-            t('wine.pierreries.wine_list.wine_0.name'),
-            t('wine.pierreries.wine_list.wine_1.name'),
-            t('wine.pierreries.wine_list.wine_2.name'),
-            t('wine.pierreries.wine_list.wine_3.name'),
-            t('wine.pierreries.wine_list.wine_4.name'),
-            t('wine.pierreries.wine_list.wine_5.name'),
-            t('wine.pierreries.wine_list.wine_6.name'),
-            t('wine.pierreries.wine_list.wine_7.name')
+            t('wine.pierreries.wine_list.wine_0'),
+            t('wine.pierreries.wine_list.wine_1'),
+            t('wine.pierreries.wine_list.wine_2'),
+            t('wine.pierreries.wine_list.wine_3'),
+            t('wine.pierreries.wine_list.wine_4'),
+            t('wine.pierreries.wine_list.wine_5'),
+            t('wine.pierreries.wine_list.wine_6'),
+            t('wine.pierreries.wine_list.wine_7')
           ]"/>
 
         <WineRange
           id="pierres_precieuses"
-          title="Pierres Précieuses"
+          :title="t('wine.pierres_precieuses.title')"
           :image-src="PierresPrecieusesImage"
-          imageAlt="Pierres Précieuses"
-          description="Pierres Précieuses description"
-          :wineNames="['Wine 1', 'Wine 2', 'Wine 3']"/>
+          :image-alt="t('wine.pierres_precieuses.title')"
+          :description="t('wine.pierres_precieuses.description')"
+          :wineNames="[
+            t('wine.pierres_precieuses.wine_list.wine_0'),
+            t('wine.pierres_precieuses.wine_list.wine_1'),
+            t('wine.pierres_precieuses.wine_list.wine_2'),
+            t('wine.pierres_precieuses.wine_list.wine_3'),
+          ]"/>
 
         <WineRange
           id="grands_crus"
-          title="Grands Crus"
+          :title="t('wine.grands_crus.title')"
           :image-src="GrandsCrusImage"
-          imageAlt="Grands Crus"
-          description="Grands Crus description"
-          :wineNames="['Wine 1', 'Wine 2', 'Wine 3']"/>
+          :image-alt="t('wine.grands_crus.title')"
+          :description="t('wine.grands_crus.description')"
+          :wineNames="[
+            t('wine.grands_crus.wine_list.wine_0'),
+            t('wine.grands_crus.wine_list.wine_1'),
+            t('wine.grands_crus.wine_list.wine_2')
+          ]"/>
 
         <WineRange
           id="vendanges_tardives"
-          title="Vendanges Tardives"
+          :title="t('wine.vendanges_tardives.title')"
           :image-src="VendangesTardivesImage"
-          imageAlt="Vendanges Tardives"
-          description="Vendanges Tardives description"
-          :wineNames="['Wine 1', 'Wine 2', 'Wine 3']"/>
+          :image-alt="t('wine.vendanges_tardives.title')"
+          :description="t('wine.vendanges_tardives.description')"
+          :wineNames="[
+            t('wine.vendanges_tardives.wine_list.wine_0'),
+            t('wine.vendanges_tardives.wine_list.wine_1')
+          ]"/>
       </section>
     </div>
   </main>
@@ -139,10 +151,16 @@ main {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 3.5rem;
   padding: 3rem 0;
   text-align: center;
+  font-weight: bolder;
+  font-style: italic;
 }
+
+/*  ------
+ *  Sidebar styles
+ */
 
 nav {
   width: 20vw;
@@ -160,21 +178,6 @@ nav {
   text-align: center;
   font-size: 1.5rem;
   padding: 2rem 0;
-}
-
-section {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-li {
-  padding-bottom: 20rem;
 }
 
 nav a {
@@ -206,5 +209,18 @@ nav a img {
 
 nav a.active img {
   transform: translateY(0);
+}
+
+/*  ------
+ *  Navbar styles
+ */
+
+section {
+  width: calc(79vw - 1px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 </style>

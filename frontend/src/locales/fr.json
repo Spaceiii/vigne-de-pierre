@@ -73,44 +73,48 @@
   "wine": {
     "title": "Un vin d'exception",
     "range": "Notre gamme de vins",
+    "range_details": "Voir les vins",
     "description": "Découvrez notre gamme de vins d'Alsace, élaborés avec passion et savoir-faire.",
     "pierreries": {
       "title": "Les Pierreries",
+      "description": "Les vins de cette gamme sont issus de vignobles en bas de coteaux et en plaine. Ils révèlent la typicité de chacun des sept cépages Alsacien.",
       "wine_list": {
-        "wine_0": {
-          "name": "Pinot Blanc"
-        },
-        "wine_1": {
-          "name": "Pinot Gris"
-        },
-        "wine_2": {
-          "name": "Riesling"
-        },
-        "wine_3": {
-          "name": "Gewurztraminer"
-        },
-        "wine_4": {
-          "name": "Muscat"
-        },
-        "wine_5": {
-          "name": "Sylvaner"
-        },
-        "wine_6": {
-          "name": "Crémant d'Alsace"
-        },
-        "wine_7": {
-          "name": "Pinot Noir"
-        }
+        "wine_0": "Pinot Blanc",
+        "wine_1": "Pinot Gris",
+        "wine_2": "Riesling",
+        "wine_3": "Gewurztraminer",
+        "wine_4": "Muscat",
+        "wine_5": "Sylvaner",
+        "wine_6": "Crémant d'Alsace",
+        "wine_7": "Pinot Noir"
       }
     },
     "pierres_precieuses": {
-      "title": "Les Pierres Précieuses"
+      "title": "Les Pierres Précieuses",
+      "description": "Issus de nos précieux terroirs et nos vieilles vignes magnifiées par le temps, les vins de cette gamme vous offriront une plus grande profondeur. Charpenté mais subtil, leur bouquet vous étonnera par son intensité et sa finesse.",
+      "wine_list": {
+        "wine_0": "Riesling Émeraude",
+        "wine_1": "Pinot Gris Saphir",
+        "wine_2": "Gewurztraminer Diamant",
+        "wine_3": "Pinot Noir Rubis"
+      }
     },
     "grands_crus": {
-      "title": "Les Grands Crus"
+      "title": "Les Grands Crus",
+      "description": "À Eguisheim, les meilleures parcelles ont été sélectionnées pour élaborer les Grands Crus. On y trouve le Eichberg et le Pfersigberg. Véritable terres d’excellence, on y produit des vins au caractère incomparable qui reflètent la richesse et l’authenticité de nos terroirs.",
+      "wine_list": {
+        "wine_0": "Risling Eichberg",
+        "wine_1": "Pinot Gris Eichberg",
+        "wine_2": "Gewurztraminer Pfersigberg"
+      }
     },
     "vendanges_tardives": {
-      "title": "Les Vendanges Tardives"
+      "title": "Les Vendanges Tardives",
+      "description": "Saint parmi les Saints, les vendanges tardives sont élaborés à partir de raisins atteint de pourriture noble (appelée aussi botrytis). Un tri sérieux et rigoureux sera à l’essence même de ces nectars, rares et complexes. Aux arômes de fruits confits, ces vins liquoreux font partie des plus grands vins du monde.",
+        "wine_list": {
+            "wine_0": "Riesling Vendanges Tardives",
+            "wine_1": "Pinot Gris Vendanges Tardives"
+        }
     }
   },
   "accommodation": {
