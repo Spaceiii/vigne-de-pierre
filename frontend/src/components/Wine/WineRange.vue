@@ -11,8 +11,8 @@
       <h2>{{ title }}</h2>
       <p>{{ description }}</p>
 
-      <p v-if="wineNames">
-        <strong>Nos vins : </strong>
+      <p>
+        <strong>{{ t('wine.presentation') }}</strong>
         <template v-for="wine in wineNames.slice(0, wineNames.length - 1)" :key="wine">
           {{ wine }},
         </template>
@@ -36,17 +36,21 @@ const {
   imageSrc,
   imageAlt,
   description,
-  wineNames
+  wineSlug
 } = defineProps({
   id: { type: String, required: true },
   title: { type: String, required: true },
   imageSrc: { type: String, required: true },
   imageAlt: { type: String, required: true },
   description: { type: String, required: true },
-  wineNames: {
+  wineSlug: {
     type: Array<String>,
-    required: false,
+    required: true,
   },
+})
+
+const wineNames = wineSlug.map((wine) => {
+  return wine
 })
 </script>
 
