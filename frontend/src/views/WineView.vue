@@ -45,8 +45,10 @@ const scrollToSection = (id: string) => {
         href="#pierreries"
         @click="scrollToSection('pierreries')"
       >
-        <div class="img-wrapper">
-          <img src="@/assets/wine_range/pierreries.jpg" alt="" />
+        <div class="img-container">
+          <div class="img-wrapper">
+            <img src="@/assets/wine_range/pierreries.jpg" alt="Les pierreries" />
+          </div>
         </div>
         {{ t('wine.pierreries.title') }}</a
       >
@@ -55,8 +57,10 @@ const scrollToSection = (id: string) => {
         href="#pierres_precieuses"
         @click="scrollToSection('pierres_precieuses')"
       >
-        <div class="img-wrapper">
-          <img src="@/assets/wine_range/pierres_precieuses.jpg" alt="" />
+        <div class="img-container">
+          <div class="img-wrapper">
+            <img src="@/assets/wine_range/pierres_precieuses.jpg" alt="Les pierres précieuses" />
+          </div>
         </div>
         {{ t('wine.pierres_precieuses.title') }}</a
       >
@@ -65,8 +69,10 @@ const scrollToSection = (id: string) => {
         href="#grands_crus"
         @click="scrollToSection('grands_crus')"
       >
-        <div class="img-wrapper">
-          <img src="@/assets/wine_range/grands_crus.jpg" alt="" />
+        <div class="img-container">
+          <div class="img-wrapper">
+            <img src="@/assets/wine_range/grands_crus.jpg" alt="Les grands crus" />
+          </div>
         </div>
         {{ t('wine.grands_crus.title') }}</a
       >
@@ -75,8 +81,10 @@ const scrollToSection = (id: string) => {
         href="#vendanges_tardives"
         @click="scrollToSection('vendanges_tardives')"
       >
-        <div class="img-wrapper">
-          <img src="@/assets/wine_range/vendanges_tardives.jpg" alt="" />
+        <div class="img-container">
+          <div class="img-wrapper">
+            <img src="@/assets/wine_range/vendanges_tardives.jpg" alt="Les vendanges tardives" />
+          </div>
         </div>
         {{ t('wine.vendanges_tardives.title') }}</a
       >
@@ -97,7 +105,7 @@ const scrollToSection = (id: string) => {
             'gewurztraminer',
             'pinot_noir',
             'muscat',
-            'cremant-d-alsace',
+            'cremant_d_alsace',
             'pinot_blanc',
           ]"/>
 
@@ -169,15 +177,18 @@ nav {
   left: 0;
   height: 100vh;
   overflow: auto;
-  border-right: 1px solid rgb(0, 0, 0);
-  background-color: white;
+  border-right: 1px solid #e0e0e0;
+  background-color: #f8f8f8;
   margin-top: 8rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar h2 {
   text-align: center;
   font-size: 1.5rem;
   padding: 2rem 0;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 nav a {
@@ -188,17 +199,37 @@ nav a {
   padding: 1rem;
   text-decoration: none;
   font-size: 1.2rem;
+  color: #555;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+  background-color: #e9e9e9;
+  color: #000;
+}
+
+nav .img-container {
+  --img-size: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--img-size);
+  height: var(--img-size);
+  background: #f8f8f8;
+  margin-right: 1rem;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 nav a.active {
-  color: black;
+  color: #000;
+  background-color: #ddd;
 }
 
 nav a .img-wrapper {
   display: inline-block;
   height: 35px;
   overflow: hidden;
-  padding-right: 1.5rem;
 }
 
 nav a img {
