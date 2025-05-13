@@ -152,10 +152,12 @@ const wineNames = wineInfo.map((wine) => wine.name)
 .wine-card {
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 1rem;
   text-align: center;
   transition: transform 0.3s ease;
   background-color: #297e00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wine-card:hover {
@@ -170,6 +172,10 @@ const wineNames = wineInfo.map((wine) => wine.name)
 
 .wine-card a {
   text-decoration: none;
+  display: block;
+  width: 100%;
+  padding: .5rem 1rem;
+
 }
 
 /* eslint-disable-next-line */

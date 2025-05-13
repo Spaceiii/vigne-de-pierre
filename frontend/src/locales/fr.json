@@ -99,119 +99,136 @@
       "description": "Issus de la récolte des vignes âgées de plus de trente ans, ces vins présentent tous les caractéristiques de leur cépage alliant puissance, rondeur et fraîcheur.\nUne robe jaune paille, un nez aromatique avec des nuances de fleurs blanches, d’agrumes (pamplemousse rose) et une touche minérale, voila ce qui caractérise au mieux ce vin. La bouche est ample et riche avec une acidité élégante en longueur.",
       "tasting": "Servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 10 ans.",
-      "suggestion": "Poissons, fruits de mer, choucroute, escargots, cuisses de grenouilles, coq au riesling, viandes blanches en sauce."
+      "suggestion": "Poissons, fruits de mer, choucroute, escargots, cuisses de grenouilles, coq au riesling, viandes blanches en sauce.",
+      "range": "pierres_precieuses"
     },
     "pinot_gris_saphir": {
       "name": "Pinot Gris Saphir",
       "description": "Issus de la récolte des vignes âgées de plus de trente ans, ces vins présentent tous les caractéristiques de leur cépage alliant puissance, rondeur et fraîcheur.\nLa robe est d’un jaune d’or soutenue avec des reflets verts. Le nez aromatique est complexe aux notes florales, d’agrumes bien mûrs. La bouche est ample, aromatique et soutenue par une acidité plaisante.",
       "tasting": "Servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 6 ans.",
-      "suggestion": "Plat à base de volailles, viandes blanches, poissons en sauce, apéritif…"
+      "suggestion": "Plat à base de volailles, viandes blanches, poissons en sauce, apéritif…",
+      "range": "pierres_precieuses"
     },
     "gewurztraminer_diamant": {
       "name": "Gewurztraminer Diamant",
       "description": "Issus de la récolte des vignes âgées de plus de trente ans, ces vins présentent tous les caractéristiques de leur cépage alliant puissance, rondeur et fraîcheur.\nLa robe est d’un jaune d’or soutenue avec des reflets verts. Le nez aromatique est complexe aux notes florales, d’agrumes bien mûrs. La bouche est ample, aromatique et soutenue par une acidité plaisante.",
       "tasting": "Servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 10 ans.",
-      "suggestion": "Apéritif, foie gras, fromages (bleue, roquefort, munster etc.), dessert."
+      "suggestion": "Apéritif, foie gras, fromages (bleue, roquefort, munster etc.), dessert.",
+      "range": "pierres_precieuses"
     },
     "pinot_noir_rubis": {
       "name": "Pinot Noir Rubis",
       "description": "Issus de la récolte des vignes âgées de plus de trente ans, ces vins présentent tous les caractéristiques de leur cépage alliant puissance, rondeur et fraîcheur.\nDe cuvaison plus longue, vieilli en fûts de chêne, c'est un vin corsé et équilibré. Une robe sombre et des arômes intenses de cerise, sa puissance subtile vous laissera une incomparable saveur.",
       "tasting": "Servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 10 ans.",
-      "suggestion": "Viande rouge, grillade, gibiers…"
+      "suggestion": "Viande rouge, grillade, gibiers…",
+      "range": "pierres_precieuses"
     },
     "riesling_eichberg": {
       "name": "Riesling Eichberg",
       "description": "Issus de nos Grands Crus, les vins sont marqués par la personnalité de chaque terroir et par le cépage. C'est dans le sous-sol que ces grands vins puisent leur caractère.\nRobe jaune, or, soutenue à reflets verts. Nez d’agrumes et florale. Palais à l’attaque franche, vin charpenté, arômes d’agrumes citron et pamplemousse rose, légère minéralité. Vin gras.",
       "tasting": "Servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 15 ans.",
-      "suggestion": "Poissons en sauce, homard, fromages frais et épicés (chèvre), volailles en sauce…"
+      "suggestion": "Poissons en sauce, homard, fromages frais et épicés (chèvre), volailles en sauce…",
+      "range": "grands_crus"
     },
     "pinot_gris_eichberg": {
       "name": "Pinot Gris Eichberg",
       "description": "Issus de nos Grands Crus, les vins sont marqués par la personnalité de chaque terroir et par le cépage. C'est dans le sous-sol que ces grands vins puisent leur caractère.\nRobe jaune soutenue. Nez aux arômes d’agrumes, fruits cuits et sous bois. Palais très ample et corsé aux arômes de fruits confits, notes grillées, rondeur en finale.",
       "tasting": "Servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 15 ans.",
-      "suggestion": "Apéritif, foie gras, homard, coquille st Jacques…"
+      "suggestion": "Apéritif, foie gras, homard, coquille st Jacques…",
+      "range": "grands_crus"
     },
     "gewurztraminer_pfersigberg": {
       "name": "Gewurztraminer Pfersigberg",
       "description": "Issus de nos Grands Crus, les vins sont marqués par la personnalité de chaque terroir et par le cépage. C'est dans le sous-sol que ces grands vins puisent leur caractère.\nRobe jaune paille. Nez aux arômes de fleurs, roses séchées, violette. Palais ample et gras aux arômes d’épices avec une touche minérale.",
       "tasting": "Servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 15 ans.",
-      "suggestion": "Apéritif, foie gras, fromage, cuisine exotique…"
+      "suggestion": "Apéritif, foie gras, fromage, cuisine exotique…",
+      "range": "grands_crus"
     },
     "gewurztraminer_vendanges_tardives": {
       "name": "Gewurztraminer Vendanges Tardives",
       "description": "Dans les années où la maturité des raisins est bonne, en fonction des conditions climatiques, nous cueillons les grappes qui portent des grains très murs ou sur mûris. Ces raisins, typés par le cépage, sont laissés sur pied plus longtemps de façon à concentrer le sucre et faire baisser l'acidité.\nRobe or jaune très dense. Nez aromatique riche et complexe aux arômes de fruits confits et de miel. En bouche, vin très ample aux arômes concentrés de fruits jaunes (abricot, pêche jaune). Persistance aromatique très longue.",
       "tasting": "Servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 20 ans.",
-      "suggestion": "Apéritif, foie gras, dessert…"
+      "suggestion": "Apéritif, foie gras, dessert…",
+      "range": "vendanges_tardives"
     },
     "pinot_gris_vendanges_tardives": {
       "name": "Pinot Gris Vendanges Tardives",
       "description": "Dans les années où la maturité des raisins est bonne, en fonction des conditions climatiques, nous cueillons les grappes qui portent des grains très murs ou sur mûris. Ces raisins, typés par le cépage, sont laissés sur pied plus longtemps de façon à concentrer le sucre et faire baisser l'acidité.\nRobe jaune or soutenue. Le nez développe des arômes de fruits confits, miel d’acacia, de pamplemousse confit. Palais ample et frais aux arômes de fruits confits, fin et long…",
       "tasting": "Servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 20 ans.",
-      "suggestion": "Apéritif, foie gras, dessert…"
+      "suggestion": "Apéritif, foie gras, dessert…",
+      "range": "vendanges_tardives"
     },
     "pinot_blanc": {
       "name": "Pinot Blanc",
       "description": "Il produit un vin de couleur jaune, frais, vert avec des expressions au nez discrètes, délicates, rondes mais typiquement alsaciennes. Il présente un équilibre entre l'acidité et la matière, offre des arômes de pêche, poire, pomme",
       "conservation": "À apprécier dans les 6 ans.",
       "suggestion": "Le \"Passe partout\", vin pour toute occasion, accompagne à merveille les viandes légères et les terrines.",
-      "tasting": "À servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes."
+      "tasting": "À servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes.",
+      "range": "pierreries"
     },
     "pinot_gris": {
       "name": "Pinot Gris",
       "description": "Il jouit d'une très grande complexité aromatique avec des notes de fruits confits, un côté mielleux, fumé, presque de sous-bois et une petite touche florale dans ses jeunes années.\nC'est un vin charpenté, gras, rond, suave, persistant en bouche.\nC'est un vin qui se garde bien, qui gagne en concentration et en bouquet.",
       "tasting": "Servir à 8°C. N'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 6 ans.",
-      "suggestion": "Entrée à base de viande (tourtes, terrines), volaille, viandes blanches, baeckhoffa (spécialité alsacienne : potée de 3 viandes), apéritif."
+      "suggestion": "Entrée à base de viande (tourtes, terrines), volaille, viandes blanches, baeckhoffa (spécialité alsacienne : potée de 3 viandes), apéritif.",
+      "range": "pierreries"
     },
     "riesling": {
       "name": "Riesling",
       "description": "Le roi des vins d'Alsace. Le plus vif, le plus pointu des cépages. Il personnifie le côté fruité et floral avec une pointe d'arôme minéral.\nDans sa jeunesse il présentera des arômes dominants de fruits, ensuite il se développera sur des notes minérales (pierre à fusil) et des arômes de fruits cuits",
       "tasting": "Servir à 8°C, n'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 6 ans.",
-      "suggestion": "Poisson, fruits de mer, choucroute, escargots, cuisses de grenouilles, coq au riesling."
+      "suggestion": "Poisson, fruits de mer, choucroute, escargots, cuisses de grenouilles, coq au riesling.",
+      "range": "pierreries"
     },
     "gewurztraminer": {
       "name": "Gewurztraminer",
       "description": "Vin charmeur, le plus connu des vins d'Alsace. Il offre une véritable explosion aromatique, associée à une densité et une complexité sans commune mesure. Il présente des notes florales, plutôt portés vers la rose, des arômes fruités (coing, pamplemousse, litchi) et épicés (cannelle).\nCe vin parfumé est un vin de garde.",
       "tasting": "Servir à 8°C, n'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 6 ans.",
-      "suggestion": "Apéritif, fromages (bleue, roquefort, munster) cuisines au curry et cuisines exotiques."
+      "suggestion": "Apéritif, fromages (bleue, roquefort, munster) cuisines au curry et cuisines exotiques.",
+      "range": "pierreries"
     },
     "muscat": {
       "name": "Muscat",
       "description": "Le plus marqué des blancs d'Alsace, le plus aromatique. Il reproduit le plus fidèlement les arômes du fruit dont il est issu. Vin sec à la différence des muscats méridionaux. C'est un merveilleux vin d'apéritif.",
       "tasting": "Servir à 8°C, n'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 6 ans.",
-      "suggestion": "Se consomme à toute heure de la journée. Se marie merveilleusement bien avec les asperges, et peut accompagner les plats relevés, style cuisine asiatique."
+      "suggestion": "Se consomme à toute heure de la journée. Se marie merveilleusement bien avec les asperges, et peut accompagner les plats relevés, style cuisine asiatique.",
+      "range": "pierreries"
     },
     "sylvaner": {
       "name": "Sylvaner",
       "description": "Vin sec, facile, agréable qui libère un léger fruité associé à des arômes végétaux. C'est un vin relativement discret, qui a un nez frais avec une structure simple.",
       "tasting": "Servir à 8°C, n'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 6 ans.",
-      "suggestion": "Poissons, fruits de mer, choucroute, charcuteries, entrées."
+      "suggestion": "Poissons, fruits de mer, choucroute, charcuteries, entrées.",
+      "range": "pierreries"
     },
     "cremant_d_alsace": {
       "name": "Crémant d'Alsace",
       "description": "Il s'agit d'un vin mousseux obtenu par la méthode champenoise appliquée aux vins d'Alsace avec fermentation en bouteille.\nLa robe est jaune pâle avec reflets verts, les bulles fines. Le nez expressif de fruits à chair blanche (pêche). En bouche, on trouve un bel équilibre entre l’acidité et les sucres.",
       "tasting": "Servir à 8°C",
       "conservation": "À apprécier dans les 6 ans.",
-      "suggestion": "Apéritif et desserts."
+      "suggestion": "Apéritif et desserts.",
+      "range": "pierreries"
     },
     "pinot_noir": {
       "name": "Pinot Noir",
       "description": "Seul cépage rouge alsacien, charmant vin d'été. Le cépage donne au vin des arômes de fruits rouges (cerises, cassis). Il présente une belle concentration et une belle structure.\nUne robe soutenue rouge cerise, reflets violacés assez dense. Nez aromatique, aux arômes de fruits rouges et noirs. En bouche, les tanins sont mûrs, les arômes sont fruités relevés d’une pointe de sous-bois.",
       "tasting": "Servir à 8°C, n'hésitez pas à le passer en carafe pour développer ses arômes.",
       "conservation": "À apprécier dans les 6 ans.",
-      "suggestion": "Viandes rouges, grillade, charcuterie."
+      "suggestion": "Viandes rouges, grillade, charcuterie.",
+      "range": "pierreries"
     }
   },
   "accommodation": {

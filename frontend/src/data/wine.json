@@ -1,0 +1,39 @@
+[
+  {
+    "range_name": "Les pierreries",
+    "wines_slug": [
+      "pinot_noir",
+      "pinot_gris",
+      "pinot_blanc",
+      "sylvaner",
+      "muscat",
+      "riesling",
+      "gewurztraminer",
+      "cremant_d_alsace"
+    ]
+  },
+  {
+    "range_name": "Les Pierres Précieuses",
+    "wines_slug": [
+      "riesling_emeraude",
+      "pinot_gris_saphir",
+      "gewurztraminer_diamant",
+      "pinot_noir_rubis"
+    ]
+  },
+  {
+    "range_name": "Les grands crus",
+    "wines_slug": [
+      "riesling_eichberg",
+      "pinot_gris_eichberg",
+      "gewurztraminer_pfersiberg"
+    ]
+  },
+  {
+    "range_name": "Les vendanges tardives",
+    "wines_slug": [
+      "gewurztraminer_vendanges_tardives",
+      "pinot_gris_vendanges_tardives"
+    ]
+  }
+]
