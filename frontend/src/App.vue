@@ -27,7 +27,7 @@ function removeMessage(id: number) {
   <NavBar />
 
   <div class="app">
-    <RouterView />
+    <RouterView :key="$route.fullPath" />
 
     <div class="debug-container" v-if="messageStore.hasMessage">
       <template v-for="message in messageStore.messages" :key="message.id">
