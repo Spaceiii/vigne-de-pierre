@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { ref } from "vue";
+import { computed, ref } from 'vue'
 const { t } = useI18n()
 
 const {
@@ -67,7 +67,7 @@ const toggleWineList = () => {
   showWineCards.value = !showWineCards.value;
 };
 
-const wineInfo = wineSlug.map((wine) => {
+const wineInfo = computed(() => wineSlug.map((wine) => {
   return {
     name: t(`wine_list.${wine}.name`),
     slug: wine,
@@ -76,9 +76,9 @@ const wineInfo = wineSlug.map((wine) => {
     conservation: t(`wine_list.${wine}.conservation`),
     suggestion: t(`wine_list.${wine}.suggestion`),
   }
-})
+}))
 
-const wineNames = wineInfo.map((wine) => wine.name)
+const wineNames = wineInfo.value.map((wine) => wine.name)
 </script>
 
 <style scoped>

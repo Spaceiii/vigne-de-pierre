@@ -74,39 +74,30 @@ const { id } = defineProps({
   id: { type: String, required: true },
 })
 
-const {
-  name,
-  description,
-  tasting,
-  conservation,
-  suggestion,
-  range
-} = {
-  name: t(`wine_list.${id}.name`),
-  description: t(`wine_list.${id}.description`),
-  tasting: t(`wine_list.${id}.tasting`),
-  conservation: t(`wine_list.${id}.conservation`),
-  suggestion: t(`wine_list.${id}.suggestion`),
-  range: t(`wine_list.${id}.range`),
-}
+const name = computed(() => t(`wine_list.${id}.name`))
+const description = computed(() => t(`wine_list.${id}.description`))
+const tasting = computed(() => t(`wine_list.${id}.tasting`))
+const conservation = computed(() => t(`wine_list.${id}.conservation`))
+const suggestion = computed(() => t(`wine_list.${id}.suggestion`))
+const range = computed(() => t(`wine_list.${id}.range`))
 
 const bigImage = ref('')
-const imageRange = getPierreImage(range)
+const imageRange = getPierreImage(range.value)
 
-if (range === 'pierreries') {
+if (range.value === 'pierreries') {
   bigImage.value = ImagePierreries
-} else if (range === 'pierres_precieuses') {
+} else if (range.value === 'pierres_precieuses') {
   bigImage.value = ImagePierresPrecieuses
-} else if (range === 'grands_crus') {
+} else if (range.value === 'grands_crus') {
   bigImage.value = ImageGrandsCrus
-} else if (range === 'vendanges_tardives') {
+} else if (range.value === 'vendanges_tardives') {
   bigImage.value = ImageVendangesTardives
 } else {
   console.error(`Unknown wine range: ${range}`)
 }
 
 const relatedWines = computed(() => {
-  const rangeData = wineData.find(data => data.range_id === range.toLowerCase())
+  const rangeData = wineData.find(data => data.range_id === range.value.toLowerCase())
   if (!rangeData) return []
 
   return rangeData.wines_slug.map(slug => ({
@@ -116,7 +107,7 @@ const relatedWines = computed(() => {
 })
 
 const otherWines = computed(() => {
-  const other = wineData.filter(data => data.range_id !== range.toLowerCase())
+  const other = wineData.filter(data => data.range_id !== range.value.toLowerCase())
 
   let wines: {[range: string]: {
     wines: {slug: string, name: string}[],

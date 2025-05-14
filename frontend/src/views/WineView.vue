@@ -9,6 +9,9 @@ import PierresPrecieusesImage from '@/assets/wine_range/pierres_precieuses-big.j
 import GrandsCrusImage from '@/assets/wine_range/grands_crus-big.jpg'
 import VendangesTardivesImage from '@/assets/wine_range/vendanges_tardives-big.jpg'
 
+import wineData from '@/data/wine.json'
+
+
 const activeSection = ref('')
 
 onMounted(() => {
@@ -26,6 +29,12 @@ onMounted(() => {
 
   sections.forEach((section) => observer.observe(section))
 })
+
+const wineDataByRange = wineData.reduce((acc: {[key: string]: string[]}, data) => {
+  const range = data.range_id.toLowerCase()
+  acc[range] = data.wines_slug
+  return acc
+}, {})
 
 const scrollToSection = (id: string) => {
   const section = document.getElementById(id)
@@ -98,16 +107,7 @@ const scrollToSection = (id: string) => {
           :image-src="PierreriesImage"
           :image-alt="t('wine.pierreries.title')"
           :description="t('wine.pierreries.description')"
-          :wineSlug="[
-            'sylvaner',
-            'pinot_gris',
-            'riesling',
-            'gewurztraminer',
-            'pinot_noir',
-            'muscat',
-            'cremant_d_alsace',
-            'pinot_blanc',
-          ]"/>
+          :wineSlug="wineDataByRange.pierreries"/>
 
         <WineRange
           id="pierres_precieuses"
@@ -115,12 +115,7 @@ const scrollToSection = (id: string) => {
           :image-src="PierresPrecieusesImage"
           :image-alt="t('wine.pierres_precieuses.title')"
           :description="t('wine.pierres_precieuses.description')"
-          :wineSlug="[
-            'riesling_emeraude',
-            'pinot_gris_saphir',
-            'gewurztraminer_diamant',
-            'pinot_noir_rubis',
-          ]"/>
+          :wineSlug="wineDataByRange.pierres_precieuses"/>
 
         <WineRange
           id="grands_crus"
@@ -128,11 +123,7 @@ const scrollToSection = (id: string) => {
           :image-src="GrandsCrusImage"
           :image-alt="t('wine.grands_crus.title')"
           :description="t('wine.grands_crus.description')"
-          :wineSlug="[
-            'riesling_eichberg',
-            'pinot_gris_eichberg',
-            'gewurztraminer_pfersigberg',
-          ]"/>
+          :wineSlug="wineDataByRange.grands_crus"/>
 
         <WineRange
           id="vendanges_tardives"
@@ -140,10 +131,7 @@ const scrollToSection = (id: string) => {
           :image-src="VendangesTardivesImage"
           :image-alt="t('wine.vendanges_tardives.title')"
           :description="t('wine.vendanges_tardives.description')"
-          :wineSlug="[
-            'gewurztraminer_vendanges_tardives',
-            'pinot_gris_vendanges_tardives',
-          ]"/>
+          :wineSlug="wineDataByRange.vendanges_tardives"/>
       </section>
     </div>
   </main>
