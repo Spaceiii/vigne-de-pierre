@@ -3,13 +3,21 @@ import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const route = useRoute()
 
 const needNav = computed(() => {
   return route.name !== 'home' && route.name !== 'not-found'
 })
+
+const toggleI18N = () => {
+  const currentLocale = locale.value
+  const newLocale = currentLocale === 'fr' ? 'en' : 'fr'
+  locale.value = newLocale
+  document.documentElement.setAttribute('lang', newLocale)
+  localStorage.setItem('locale', newLocale)
+}
 </script>
 
 <template>
@@ -21,7 +29,9 @@ const needNav = computed(() => {
           <h1>Pierre de vigne</h1>
         </router-link>
       </div>
-      <div class="right"></div>
+      <div class="right">
+        <button @click="toggleI18N">jgepfz</button>
+      </div>
     </nav>
     <nav class="sub-nav" v-if="needNav">
       <router-link active-class="active" to="/">{{ t('nav.home') }}</router-link>

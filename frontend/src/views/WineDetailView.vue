@@ -7,9 +7,9 @@
     <div class="content">
       <h1>{{ name }}</h1>
       <p>{{ description }}</p>
-      <p><strong>Dégustation :</strong> {{ tasting }}</p>
-      <p><strong>Conservation :</strong> {{ conservation }}</p>
-      <p><strong>Suggestion :</strong> {{ suggestion }}</p>
+      <p><strong>{{ t('wine_page.tasting') }} :</strong> {{ tasting }}</p>
+      <p><strong>{{ t('wine_page.conservation') }} :</strong> {{ conservation }}</p>
+      <p><strong>{{ t('wine_page.suggestion') }} :</strong> {{ suggestion }}</p>
     </div>
   </section>
 
@@ -18,7 +18,7 @@
       <div class="image-wrapper">
         <img :src="imageRange" :alt="imageRange">
       </div>
-      <h2>Autres vins de la gamme <span style="font-style: italic">{{ t(`wine.${range}.title`) }}</span></h2>
+      <h2>{{ t('wine_page.related_wines') }} <span style="font-style: italic">{{ t(`wine.${range}.title`) }}</span></h2>
     </div>
     <div class="wine-cards">
       <div v-for="wine in relatedWines" :key="wine.slug" class="wine-card">
@@ -32,7 +32,7 @@
   </div>
 
   <div class="other-wines">
-    <h2 class="other-wines-title">Autres vins</h2>
+    <h2 class="other-wines-title">{{ t('wine_page.other_wines') }}</h2>
     <div v-for="(wines, range) in otherWines" :key="range" class="wine-range">
       <div class="wine-card-title">
         <div class="image-wrapper">

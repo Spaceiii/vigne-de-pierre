@@ -1,0 +1,268 @@
+{
+  "brand": "Pierre de Vigne",
+  "brand_family": "Bannwarth Family of Eguisheim",
+  "notFound": {
+    "title": "404",
+    "message": "The page you are looking for does not exist.",
+    "back": "Back to home"
+  },
+  "error": {
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info",
+    "close": "Close"
+  },
+  "logo": "Logo",
+  "nav": {
+    "home": "Home",
+    "domain": "The Estate",
+    "wines": "Our Wines",
+    "accommodation": "Accommodation",
+    "contact": "Contact"
+  },
+  "home": {
+    "header": {
+      "alt": "Vineyards",
+      "see_more": "Discover our expertise and wines"
+    },
+    "section_title": "Discover exceptional craftsmanship in the heart of Alsace",
+    "section_1": {
+      "title": "Our Estate",
+      "description": "The Pierre de Vigne estate is located in Eguisheim, in the heart of Alsace. We cultivate our vines with passion and respect for the environment."
+    },
+    "section_2": {
+      "title": "Our Wines",
+      "description": "Discover our range of Alsace wines, crafted with passion and expertise."
+    },
+    "section_3": {
+      "title": "Accommodation",
+      "description": "We welcome motorhome travelers to our estate. Enjoy the peace and nature of the vineyards."
+    },
+    "section_4": {
+      "title": "Contact",
+      "description": "Feel free to contact us with any questions or booking requests."
+    },
+    "visit": "Come and discover our estate"
+  },
+  "domain_page": {
+    "title": "The Pierre de Vigne Estate",
+    "philo": {
+      "title": "Born from Alsatian soil",
+      "quote": "Everything beautiful from nature is passed into wine. Everything good from man is transmitted to wine.",
+      "alt": "Alsatian vineyards",
+      "author": "Louis Orizet (1913–1998), agricultural engineer and writer",
+      "content_0": "The Pierre de Vigne estate is located in Eguisheim, the cradle of the <strong>Alsatian vineyard</strong>. It is run by the <strong>Bannwarth family</strong>, and covers 8 hectares including 2 Grand Crus: <strong>Eichberg</strong> and <strong>Pfersigberg</strong>. Today, our terroirs, Pierre de Vigne, and the arrival of Pierre, our young winemaker, are the source of wines rich in emotion.",
+      "content_1": "To be a winemaker today is above all to be a farmer who loves working the land.<br><br>Lady Nature has given us a treasure, and we must respect her. Thus, we work our vines with respect for the environment and their biological rhythm. Throughout the process, our interventions are reasoned, and our work is carefully thought out to best reflect our terroirs.<br><br>Tasting, dreaming, but always wishing to share... that is the essence."
+    },
+    "vignes": {
+      "title": "Eguisheim: Cradle of the Alsatian Vineyard",
+      "alt": "Hand touching vines",
+      "content_0": "Our vineyard covers an area of 8 hectares. Most of it lies in Eguisheim, an ancient papal city with rich terroirs. Indeed, Eguisheim introduced the vine during Roman times. Its wine quality quickly made it world-renowned. Some famous vineyards emerged: <strong>Eichberg</strong> and <strong>Pfersigberg</strong>. Today, these places are among the <strong>51 Alsatian Grand Crus</strong>, forming a mosaic of unique terroirs."
+    },
+    "cave": {
+      "title": "The Cellar: Winemaking as a continuation of vineyard work.",
+      "alt": "Wine cellar",
+      "content_0": "Once harvested, the grape becomes the very essence of the wine. Its quality is shaped by the selected terroirs and the care provided at every moment. Gentle and long pressing produces pure and aromatic wines. Fermentation occurs naturally, and aging on lees remains standard. These methods, paired with our terroirs, define the estate’s signature: <strong>elegance and finesse.</strong>"
+    },
+    "caveau": {
+      "title": "The Tasting Cellar",
+      "alt": "Pierre de Vigne glass",
+      "content_0": "Our tasting cellar is a convivial place that showcases the culmination of our work. Through these glasses of wine, one can perceive the vigilance of the winemaker, the smile of the harvester, the effort of the presser, and the passion of the cellar master.<br><br><strong>Opening Hours</strong>: Monday to Saturday from 8 a.m. to 12 p.m. and 1:30 p.m. to 7 p.m.<br>Closed on Sundays<br><br><strong>Group visits</strong>: Up to 70 people — guided tour of the old town, museum visit, and wine tasting with kougelhopf. You can also discover the vineyard trail."
+    }
+  },
+  "wine": {
+    "title": "An Exceptional Wine",
+    "range": "Our Wine Range",
+    "range_details": "See the Wines",
+    "presentation": "Our Wines",
+    "description": "Discover our range of Alsace wines, crafted with passion and expertise.",
+    "pierreries": {
+      "title": "The Gemstones",
+      "description": "The wines in this range come from vineyards at the foot of hills and in the plains. They reveal the typical character of each of the seven Alsatian grape varieties."
+    },
+    "pierres_precieuses": {
+      "title": "The Precious Stones",
+      "description": "From our treasured terroirs and old vines enhanced by time, the wines in this range offer greater depth. Full-bodied yet subtle, their bouquet will surprise you with its intensity and finesse."
+    },
+    "grands_crus": {
+      "title": "The Grands Crus",
+      "description": "In Eguisheim, the finest plots have been selected to produce the Grands Crus: Eichberg and Pfersigberg. True lands of excellence, they yield wines of incomparable character that reflect the richness and authenticity of our terroirs."
+    },
+    "vendanges_tardives": {
+      "title": "Late Harvest Wines",
+      "description": "Holy among the holiest, late harvest wines are made from grapes affected by noble rot (also known as botrytis). A strict and careful selection lies at the heart of these rare and complex nectars. With aromas of candied fruits, these sweet wines rank among the greatest wines in the world."
+    }
+  },
+  "wine_list": {
+    "riesling_emeraude": {
+      "name": "Riesling Emerald",
+      "description": "From vines over thirty years old, these wines fully express the characteristics of their grape variety, combining power, roundness, and freshness.\nA straw yellow robe, an aromatic nose with nuances of white flowers, citrus (pink grapefruit), and a mineral touch — this best defines the wine. The palate is full and rich with elegant, lingering acidity.",
+      "tasting": "Serve at 8°C. Feel free to decant to develop its aromas.",
+      "conservation": "Best enjoyed within 10 years.",
+      "suggestion": "Fish, seafood, sauerkraut, snails, frog legs, coq au Riesling, white meats in sauce.",
+      "range": "pierres_precieuses"
+    },
+    "pinot_gris_saphir": {
+      "name": "Pinot Gris Sapphire",
+      "description": "From vines over thirty years old, these wines fully express the characteristics of their grape variety, combining power, roundness, and freshness.\nThe robe is deep golden yellow with green highlights. The aromatic nose is complex, with floral notes and ripe citrus. The palate is full, aromatic, and supported by pleasant acidity.",
+      "tasting": "Serve at 8°C. Feel free to decant to develop its aromas.",
+      "conservation": "Best enjoyed within 6 years.",
+      "suggestion": "Poultry dishes, white meats, fish in sauce, aperitif...",
+      "range": "pierres_precieuses"
+    },
+    "gewurztraminer_diamant": {
+      "name": "Gewurztraminer Diamond",
+      "description": "From vines over thirty years old, these wines fully express the characteristics of their grape variety, combining power, roundness, and freshness.\nThe robe is deep golden yellow with green highlights. The aromatic nose is complex, with floral notes and ripe citrus. The palate is full, aromatic, and supported by pleasant acidity.",
+      "tasting": "Serve at 8°C. Feel free to decant to develop its aromas.",
+      "conservation": "Best enjoyed within 10 years.",
+      "suggestion": "Aperitif, foie gras, cheeses (blue, Roquefort, Munster, etc.), dessert.",
+      "range": "pierres_precieuses"
+    },
+    "pinot_noir_rubis": {
+      "name": "Pinot Noir Ruby",
+      "description": "From vines over thirty years old, these wines fully express the characteristics of their grape variety, combining power, roundness, and freshness.\nWith longer maceration and oak barrel aging, this is a full-bodied and balanced wine. A dark robe and intense cherry aromas — its subtle power leaves an incomparable flavor.",
+      "tasting": "Serve at 8°C. Feel free to decant to develop its aromas.",
+      "conservation": "Best enjoyed within 10 years.",
+      "suggestion": "Red meats, grilled dishes, game…",
+      "range": "pierres_precieuses"
+    },
+    "riesling_eichberg": {
+      "name": "Riesling Eichberg",
+      "description": "From our Grands Crus, the wines are marked by the personality of each terroir and grape variety. These great wines draw their character from the subsoil.\nYellow-golden robe with green reflections. Citrus and floral nose. The palate is frank on attack, structured, with citrus aromas of lemon and pink grapefruit, and slight minerality. A full-bodied wine.",
+      "tasting": "Serve at 8°C. Feel free to decant to develop its aromas.",
+      "conservation": "Best enjoyed within 15 years.",
+      "suggestion": "Fish in sauce, lobster, fresh and spicy cheeses (goat cheese), poultry in sauce…",
+      "range": "grands_crus"
+    },
+    "pinot_gris_eichberg": {
+      "name": "Pinot Gris Eichberg",
+      "description": "From our Grands Crus, the wines are marked by the personality of each terroir and grape variety. These great wines draw their character from the subsoil.\nDeep yellow robe. Nose with aromas of citrus, stewed fruit, and undergrowth. A very full-bodied and rich palate with aromas of candied fruit, toasted notes, and roundness on the finish.",
+      "tasting": "Serve at 8°C. Feel free to decant to develop its aromas.",
+      "conservation": "Best enjoyed within 15 years.",
+      "suggestion": "Aperitif, foie gras, lobster, scallops…",
+      "range": "grands_crus"
+    },
+    "gewurztraminer_pfersigberg": {
+      "name": "Gewurztraminer Pfersigberg",
+      "description": "From our Grands Crus, the wines are marked by the personality of each terroir and grape variety. These great wines draw their character from the subsoil.\nStraw yellow robe. Nose with floral aromas, dried rose, and violet. Full and rich palate with spicy aromas and a mineral touch.",
+      "tasting": "Serve at 8°C. Feel free to decant to develop its aromas.",
+      "conservation": "Best enjoyed within 15 years.",
+      "suggestion": "Aperitif, foie gras, cheese, exotic cuisine…",
+      "range": "grands_crus"
+    },
+    "gewurztraminer_vendanges_tardives": {
+      "name": "Gewurztraminer Late Harvest",
+      "description": "In years with good grape ripeness, depending on weather conditions, we harvest clusters with very ripe or overripe berries. These grapes, true to their variety, are left on the vine longer to concentrate sugars and lower acidity.\nVery dense golden yellow robe. Rich and complex aromatic nose with notes of candied fruits and honey. On the palate, a very full wine with concentrated aromas of yellow fruits (apricot, yellow peach). Very long aromatic persistence.",
+      "tasting": "Serve at 8°C. Feel free to decant to develop its aromas.",
+      "conservation": "Best enjoyed within 20 years.",
+      "suggestion": "Aperitif, foie gras, dessert…",
+      "range": "vendanges_tardives"
+    },
+    "pinot_gris_vendanges_tardives": {
+      "name": "Pinot Gris Late Harvest",
+      "description": "In years with good grape ripeness, depending on weather conditions, we harvest clusters with very ripe or overripe berries. These grapes, true to their variety, are left on the vine longer to concentrate sugars and lower acidity.\nSustained golden yellow robe. The nose develops aromas of candied fruit, acacia honey, and candied grapefruit. A broad and fresh palate with candied fruit aromas, fine and long...",
+      "tasting": "Serve at 8°C. Feel free to decant to develop its aromas.",
+      "conservation": "Best enjoyed within 20 years.",
+      "suggestion": "Aperitif, foie gras, dessert…",
+      "range": "vendanges_tardives"
+    },
+    "pinot_blanc": {
+      "name": "Pinot Blanc",
+      "description": "Produces a yellow wine, fresh, green, with discreet, delicate aromas on the nose—rounded, yet typically Alsatian. It offers a balance between acidity and body, with aromas of peach, pear, and apple.",
+      "conservation": "Best enjoyed within 6 years.",
+      "suggestion": "The 'goes-with-everything' wine, suitable for all occasions. Pairs wonderfully with light meats and terrines.",
+      "tasting": "Serve at 8°C. Decanting will help develop its aromas.",
+      "range": "pierreries"
+    },
+    "pinot_gris": {
+      "name": "Pinot Gris",
+      "description": "Boasts great aromatic complexity with notes of candied fruits, honeyed and smoky undertones, hints of forest floor, and a light floral touch in its youth. A full-bodied, rich, smooth, and lingering wine. Ages well and gains in concentration and bouquet.",
+      "tasting": "Serve at 8°C. Decanting will help develop its aromas.",
+      "conservation": "Best enjoyed within 6 years.",
+      "suggestion": "Meaty starters (pies, terrines), poultry, white meats, baeckeoffe (Alsatian meat stew), aperitif.",
+      "range": "pierreries"
+    },
+    "riesling": {
+      "name": "Riesling",
+      "description": "The king of Alsace wines. The liveliest and sharpest of the varietals. Embodies fruity and floral characteristics with a hint of mineral aromas. In its youth, it shows dominant fruit aromas, later evolving towards mineral notes (flint) and stewed fruits.",
+      "tasting": "Serve at 8°C. Decanting will help develop its aromas.",
+      "conservation": "Best enjoyed within 6 years.",
+      "suggestion": "Fish, seafood, sauerkraut, snails, frog legs, coq au Riesling.",
+      "range": "pierreries"
+    },
+    "gewurztraminer": {
+      "name": "Gewurztraminer",
+      "description": "A seductive wine and the most renowned of Alsace. Offers an explosion of aromas with exceptional density and complexity. Features floral notes, especially rose, along with fruity (quince, grapefruit, lychee) and spicy (cinnamon) nuances. A perfumed wine that ages well.",
+      "tasting": "Serve at 8°C. Decanting will help develop its aromas.",
+      "conservation": "Best enjoyed within 6 years.",
+      "suggestion": "Aperitif, cheeses (blue, Roquefort, Munster), curry and exotic dishes.",
+      "range": "pierreries"
+    },
+    "muscat": {
+      "name": "Muscat",
+      "description": "The most distinctive of Alsace whites, also the most aromatic. Faithfully reproduces the aromas of the fruit it comes from. A dry wine—unlike southern Muscats—making it a wonderful aperitif wine.",
+      "tasting": "Serve at 8°C. Decanting will help develop its aromas.",
+      "conservation": "Best enjoyed within 6 years.",
+      "suggestion": "Can be enjoyed any time of day. Pairs wonderfully with asparagus and spicy dishes, especially Asian cuisine.",
+      "range": "pierreries"
+    },
+    "sylvaner": {
+      "name": "Sylvaner",
+      "description": "A dry, easy-drinking, pleasant wine with light fruitiness and vegetal aromas. Relatively discreet, with a fresh nose and a simple structure.",
+      "tasting": "Serve at 8°C. Decanting will help develop its aromas.",
+      "conservation": "Best enjoyed within 6 years.",
+      "suggestion": "Fish, seafood, sauerkraut, cold cuts, appetizers.",
+      "range": "pierreries"
+    },
+    "cremant_d_alsace": {
+      "name": "Crémant d'Alsace",
+      "description": "A sparkling wine made using the Champagne method applied to Alsace wines, with secondary fermentation in the bottle. Pale yellow robe with green reflections and fine bubbles. Expressive nose with white-fleshed fruits (peach). On the palate, a beautiful balance between acidity and sweetness.",
+      "tasting": "Serve at 8°C.",
+      "conservation": "Best enjoyed within 6 years.",
+      "suggestion": "Aperitif and desserts.",
+      "range": "pierreries"
+    },
+    "pinot_noir": {
+      "name": "Pinot Noir",
+      "description": "The only red grape variety in Alsace—a charming summer wine. Offers red fruit aromas (cherry, blackcurrant). Well-concentrated with a nice structure. Deep cherry-red robe with purplish reflections. Aromatic nose of red and black fruits. On the palate, ripe tannins and fruity flavors enhanced by a hint of forest floor.",
+      "tasting": "Serve at 8°C. Decanting will help develop its aromas.",
+      "conservation": "Best enjoyed within 6 years.",
+      "suggestion": "Red meats, grilled dishes, cold cuts.",
+      "range": "pierreries"
+    }
+  },
+  "wine_page": {
+    "tasting": "Tasting",
+    "conservation": "Cellaring",
+    "suggestion": "Suggestion",
+    "related_wines": "Other wines from this range",
+    "other_wines": "Other wines"
+  },
+  "accommodation": {
+    "title": "We welcome motorhome travellers!",
+    "subtitle": "Make a stop in the heart of the Alsatian vineyard",
+    "description": "We welcome motorhome travellers to our estate. Enjoy the peace and nature of the vineyards.",
+    "content": "Since 1998, the estate has been part of the <strong>France Passion</strong> network, and graciously hosts travellers wishing to extend their stay.<br><br>For those wishing to fully enjoy our beautiful region, guest rooms are also available.<br><br>For more information and reservations, <a target='_blank' href='http://www.bannwarth.eu/'>click here</a>.",
+    "alt": "Motorhome on the estate"
+  },
+  "contact": {
+    "title": "Get in touch!",
+    "on_place": "On site",
+    "address": "3 Rue de Bruxelles, 68420 Eguisheim",
+    "online": "Online",
+    "phone": "Phone",
+    "email": "Email",
+    "schedule": "Opening hours",
+    "schedule_0": "Monday to Saturday from 8&nbsp;AM to 12&nbsp;PM and from 1:30&nbsp;PM to 7&nbsp;PM",
+    "schedule_1": "Closed on Sundays",
+    "group": "Group welcome up to 70 people",
+    "group_0": "Visit of the old town",
+    "group_1": "Visit of the museum",
+    "group_2": "Wine tasting with kougelhof",
+    "group_3": "Also possible: discovery of the vineyard trail",
+    "reservation": "Book a visit"
+  },
+  "footer": {
+    "prevention": "Excessive alcohol consumption is harmful to your health. Drink responsibly."
+  }
+}

@@ -231,6 +231,13 @@
       "range": "pierreries"
     }
   },
+  "wine_page": {
+    "tasting": "Dégustation",
+    "conservation": "Conservation",
+    "suggestion": "Suggestion",
+    "related_wines": "Autres vins de la gamme",
+    "other_wines": "Autres vins"
+  },
   "accommodation": {
     "title": "Nous accueillons les campings-caristes !",
     "subtitle": "Faites une escale au coeur du vignoble alsacien",
