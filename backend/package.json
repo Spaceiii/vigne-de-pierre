@@ -5,9 +5,11 @@
   "license": "ISC",
   "author": "Timothée MEYER",
   "type": "module",
+  "target": "ESNext",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsx src/db/index.ts"
   },
   "dependencies": {
     "body-parser": "^2.2.0",
