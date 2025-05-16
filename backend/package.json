@@ -5,11 +5,11 @@
   "license": "ISC",
   "author": "Timothée MEYER",
   "type": "module",
-  "target": "ESNext",
-  "main": "index.ts",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx src/db/index.ts"
+    "insert": "tsx src/db/index.ts",
+    "serve": "tsx src/server.ts"
   },
   "dependencies": {
     "body-parser": "^2.2.0",
@@ -20,6 +20,7 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "@types/express": "^5.0.1",
     "@types/pg": "^8.11.11",
     "drizzle-kit": "^0.30.6",
     "tsx": "^4.19.3"

@@ -106,25 +106,31 @@ const relatedWines = computed(() => {
   }))
 })
 
+interface WineInfo {
+  slug: string
+  name: string
+}
+
+interface RangeInfo {
+  wines: WineInfo[]
+  pierre: string
+}
+
 const otherWines = computed(() => {
-  const other = wineData.filter(data => data.range_id !== range.value.toLowerCase())
+  const otherRanges = wineData.filter(data => data.range_id !== range.value.toLowerCase())
 
-  let wines: {[range: string]: {
-    wines: {slug: string, name: string}[],
-    pierre: string
-  }} = {}
-
-  other.forEach((data) => {
-    wines[data.range_id] = {
-      wines: data.wines_slug.map(slug => ({
-        slug,
-        name: t(`wine_list.${slug}.name`)
-      })),
-      pierre: getPierreImage(data.range_id)
-    }
+  const createWineInfo = (slug: string): WineInfo => ({
+    slug,
+    name: t(`wine_list.${slug}.name`)
   })
 
-  return wines
+  return otherRanges.reduce<Record<string, RangeInfo>>((acc, data) => ({
+    ...acc,
+    [data.range_id]: {
+      wines: data.wines_slug.map(createWineInfo),
+      pierre: getPierreImage(data.range_id)
+    }
+  }), {})
 })
 
 function getPierreImage(range: string) {
