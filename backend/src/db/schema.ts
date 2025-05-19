@@ -1,7 +1,7 @@
 import { integer, pgTable, text, varchar } from 'drizzle-orm/pg-core'
 
 const rangeTable = pgTable("range", {
-    slug: varchar("slug", { length: 255 }).notNull().primaryKey(),
+    slug: varchar("slug", { length: 255 }).primaryKey(),
     name: varchar("name", { length: 255 }).notNull(),
     description: text("description").notNull(),
 })
