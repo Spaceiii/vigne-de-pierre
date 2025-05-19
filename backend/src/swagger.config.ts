@@ -14,7 +14,7 @@ const options = {
       }
     ]
   },
-  apis: ['./routes/wine.ts'],
+  apis: ['./src/routes/*.ts'],
 }
 
 const swaggerSpec = swaggerJSDoc(options)

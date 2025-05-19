@@ -12,7 +12,7 @@ const db = drizzle(process.env.DATABASE_URL!)
 
 /**
  * @swagger
- * /api/wine/details:
+ * /api/wine/all_wines:
  *   get:
  *     tags:
  *       - Vins
@@ -21,7 +21,7 @@ const db = drizzle(process.env.DATABASE_URL!)
  *       200:
  *         description: Liste de tous les vins
  */
-router.get('/details/', async (req, res) => {
+router.get('/all_wines/', async (req, res) => {
   const wines = await db.select().from(wineTable)
   res.json(wines)
 })
@@ -157,46 +157,45 @@ router.get('/translation/:code/:slug', async (req, res) => {
 /**
  * @swagger
  * /api/wine/create:
- *  post:
- *    tags:
- *    - Vins
- *    summary: Crée un nouveau vin
- *    description: Crée un nouveau vin avec les informations fournies
- *    parameters:
- *    - name: wine
- *    in: body
- *      required: true
- *      description: Informations du vin à créer
- *      schema:
- *        type: object
- *    properties:
- *    name:
- *    type: string
- *    description: Nom du vin
- *    example: "Chardonnay"
- *    slug:
- *      type: string
- *      description: Slug du vin
- *      example: "chardonnay"
- *    nativeName:
- *      type: string
- *      description: Nom natif du vin
- *      example: "Chardonnay"
- *    price:
- *      type: integer
- *      description: Prix du vin
- *      example: 20
- *    rangeSlug:
- *    type: string
- *      description: Slug de la gamme du vin
- *      example: "pierreries"
- *    responses:
- *    201:
- *    description: Vin créé avec succès
- *    400:
- *    description: Requête invalide
- *    500:
- *    description: Erreur interne du serveur
+ *   post:
+ *     tags:
+ *       - Vins
+ *     summary: Crée un nouveau vin
+ *     description: Crée un nouveau vin avec les informations fournies
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nom du vin
+ *                 example: "Chardonnay"
+ *               slug:
+ *                 type: string
+ *                 description: Slug du vin
+ *                 example: "chardonnay"
+ *               nativeName:
+ *                 type: string
+ *                 description: Nom natif du vin
+ *                 example: "Chardonnay"
+ *               price:
+ *                 type: integer
+ *                 description: Prix du vin
+ *                 example: 20
+ *               rangeSlug:
+ *                 type: string
+ *                 description: Slug de la gamme du vin
+ *                 example: "pierreries"
+ *     responses:
+ *       201:
+ *         description: Vin créé avec succès
+ *       400:
+ *         description: Requête invalide
+ *       500:
+ *         description: Erreur interne du serveur
  */
 router.post('/create', async (req, res) => {
   const {
@@ -236,52 +235,51 @@ router.post('/create', async (req, res) => {
  * /api/wine/translation/create:
  *   post:
  *     tags:
- *     - Vins
+ *       - Vins
  *     summary: Crée une nouvelle traduction de vin
  *     description: Crée une nouvelle traduction de vin avec les informations fournies
- *     parameters:
- *       - name: translation
- *       in: body
+ *     requestBody:
  *       required: true
- *       description: Informations de la traduction à créer
- *       schema:
- *       type: object
- *       properties:
- *         name:
- *           type: string
- *           description: Nom du vin
- *           example: "Chardonnay"
- *         slug:
- *           type: string
- *           description: Slug du vin
- *           example: "chardonnay"
- *         languageId:
- *           type: integer
- *           description: ID de la langue
- *           example: 1
- *         description:
- *           type: string
- *           description: Description du vin
- *           example: "Un vin blanc sec et fruité"
- *         tasting:
- *           type: string
- *           description: Notes de dégustation
- *           example: "Fruits tropicaux, fleurs blanches"
- *         conservation:
- *           type: string
- *           description: Informations de conservation
- *           example: "À consommer dans les 5 ans"
- *         suggestion:
- *           type: string
- *           description: Suggestions d'accords mets-vins
- *           example: "Accompagne parfaitement les fruits de mer"
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nom du vin
+ *                 example: "Chardonnay"
+ *               slug:
+ *                 type: string
+ *                 description: Slug du vin
+ *                 example: "chardonnay"
+ *               languageId:
+ *                 type: integer
+ *                 description: ID de la langue
+ *                 example: 1
+ *               description:
+ *                 type: string
+ *                 description: Description du vin
+ *                 example: "Un vin blanc sec et fruité"
+ *               tasting:
+ *                 type: string
+ *                 description: Notes de dégustation
+ *                 example: "Fruits tropicaux, fleurs blanches"
+ *               conservation:
+ *                 type: string
+ *                 description: Informations de conservation
+ *                 example: "À consommer dans les 5 ans"
+ *               suggestion:
+ *                 type: string
+ *                 description: Suggestions d'accords mets-vins
+ *                 example: "Accompagne parfaitement les fruits de mer"
  *     responses:
  *       201:
- *       description: Traduction créée avec succès
+ *         description: Traduction créée avec succès
  *       400:
- *       description: Requête invalide
+ *         description: Requête invalide
  *       500:
- *       description: Erreur interne du serveur
+ *         description: Erreur interne du serveur
  */
 router.post('/translation/create', async (req, res) => {
   const {
@@ -327,34 +325,35 @@ router.post('/translation/create', async (req, res) => {
  * /api/wine/range/create:
  *   post:
  *     tags:
- *     - Vins
+ *       - Vins
  *     summary: Crée une nouvelle gamme de vin
  *     description: Crée une nouvelle gamme de vin avec les informations fournies
- *     parameters:
- *       - name: range
- *       in: body
+ *     requestBody:
  *       required: true
- *       description: Informations de la gamme à créer
- *       schema:
- *       type: object
- *       properties:
- *         name:
- *           type: string
- *           description: Nom de la gamme
- *           example: "Pierreries"
- *         slug:
- *           type: string
- *           description: Slug de la gamme
- *           example: "pierreries"
- *         description:
- *           type: string
- *           description: Description de la gamme
- *           example: "Une sélection de vins d'exception"
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nom de la gamme
+ *                 example: "Pierreries"
+ *               slug:
+ *                 type: string
+ *                 description: Slug de la gamme
+ *                 example: "pierreries"
+ *               description:
+ *                 type: string
+ *                 description: Description de la gamme
+ *                 example: "Une sélection de vins d'exception"
  *     responses:
  *       201:
- *       description: Gamme créée avec succès
+ *         description: Gamme créée avec succès
  *       400:
- *       description: Requête invalide
+ *         description: Requête invalide
+ *       500:
+ *         description: Erreur interne du serveur
  */
 router.post('/range/create', async (req, res) => {
   const {
@@ -391,7 +390,7 @@ router.post('/range/create', async (req, res) => {
  * /api/wine/range/update/{slug}:
  *   put:
  *     tags:
- *     - Vins
+ *       - Vins
  *     summary: Met à jour le nom d'une gamme de vin
  *     description: Met à jour le nom d'une gamme de vin avec les informations fournies
  *     parameters:
@@ -401,20 +400,22 @@ router.post('/range/create', async (req, res) => {
  *         description: Slug de la gamme à mettre à jour
  *         schema:
  *           type: string
- *       - name: range
- *         in: body
- *         required: true
- *         description: Informations de la gamme à mettre à jour
- *         schema:
- *           type: object
- *           properties:
- *             name:
- *               type: string
- *               description: Nouveau nom de la gamme
- *               example: "Nouveau nom"
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nouveau nom de la gamme
+ *                 example: "Nouveau nom"
  *     responses:
  *       200:
  *         description: Gamme mise à jour avec succès
+ *       500:
+ *         description: Erreur interne du serveur
  */
 router.put('/range/update/:slug', async (req, res) => {
   const { slug } = req.params
@@ -440,7 +441,7 @@ router.put('/range/update/:slug', async (req, res) => {
  * /api/wine/range/delete/{slug}:
  *   delete:
  *     tags:
- *     - Vins
+ *       - Vins
  *     summary: Supprime une gamme de vin
  *     description: Supprime une gamme de vin avec le slug fourni
  *     parameters:
@@ -453,6 +454,8 @@ router.put('/range/update/:slug', async (req, res) => {
  *     responses:
  *       200:
  *         description: Gamme supprimée avec succès
+ *       500:
+ *         description: Erreur interne du serveur
  */
 router.delete('/range/delete/:slug', async (req, res) => {
   const { slug } = req.params
