@@ -49,6 +49,12 @@ const scrollToSection = (id: string) => {
     <nav class="sidebar">
       <h2>{{ t('wine.range') }}</h2>
 
+      <div class="language-link">
+        <router-link to="/wine/language" class="language-button">
+          {{ t('wine.view_by_language') }}
+        </router-link>
+      </div>
+
       <a
         :class="{ active: activeSection === 'pierreries' }"
         href="#pierreries"
@@ -228,6 +234,27 @@ nav a img {
 
 nav a.active img {
   transform: translateY(0);
+}
+
+.language-link {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.language-button {
+  display: inline-block;
+  background-color: #297e00;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.language-button:hover {
+  background-color: #1d5e00;
 }
 
 /*  ------

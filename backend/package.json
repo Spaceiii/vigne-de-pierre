@@ -9,10 +9,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "insert": "tsx src/db/index.ts",
-    "serve": "tsx src/server.ts"
+    "serve": "tsx src/server.ts",
+    "generate": "drizzle-kit generate"
   },
   "dependencies": {
     "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.41.0",
     "express": "^5.1.0",
@@ -21,6 +23,7 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.18",
     "@types/express": "^5.0.1",
     "@types/pg": "^8.11.11",
     "@types/swagger-jsdoc": "^6.0.4",

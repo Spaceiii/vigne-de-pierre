@@ -30,10 +30,19 @@ const wineTranslationTable = pgTable("translation", {
     suggestion: varchar("suggestion", { length: 255 }).notNull(),
 })
 
+const rangeTranslationTable = pgTable("range_translation", {
+    id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+    languageId: integer("language_id").notNull().references(() => languageTable.id),
+    rangeSlug: varchar("range_slug", { length: 255 }).notNull().references(() => rangeTable.slug),
+    name: varchar("name", { length: 255 }).notNull(),
+    description: text("description").notNull(),
+})
+
 
 export {
     rangeTable,
     wineTable,
     languageTable,
     wineTranslationTable,
+    rangeTranslationTable,
 }

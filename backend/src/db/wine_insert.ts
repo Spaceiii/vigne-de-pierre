@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import { drizzle } from 'drizzle-orm/node-postgres'
-import { languageTable, rangeTable, wineTable, wineTranslationTable } from './schema.js'
+import { languageTable, rangeTable, rangeTranslationTable, wineTable, wineTranslationTable } from './schema.js'
 import { eq } from 'drizzle-orm'
 import { selectOnlyOne } from './utils/select.js'
 
@@ -751,9 +751,112 @@ async function insertWineTranslation() {
   console.log('🌐 Wine translation data inserted successfully!')
 }
 
+async function insertRangeTranslation() {
+  console.log('🌐 Inserting range translation data...')
+
+  const french_id = (await selectOnlyOne(await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, 'fr')))).id
+  const english_id = (await selectOnlyOne(await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, 'en')))).id
+  const japanese_id = (await selectOnlyOne(await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, 'ja')))).id
+
+  await db.insert(rangeTranslationTable).values([
+    {
+      rangeSlug: 'pierreries',
+      languageId: french_id,
+      name: 'Les Pierreries',
+      description: 'Les vins de cette gamme sont issus de vignobles en bas de coteaux et en plaine. Ils révèlent la typicité de chacun des sept cépages Alsacien. Aromatiques et expressifs, ce sont des vins appréciés pour leur fraîcheur, leur équilibre et leurs saveurs.'
+    },
+    {
+      rangeSlug: 'pierreries',
+      languageId: english_id,
+      name: 'The Pierreries',
+      description: 'The wines in this range come from vineyards at the bottom of hillsides and in the plain. They reveal the typicity of each of the seven Alsatian grape varieties. Aromatic and expressive, these wines are appreciated for their freshness, balance and flavors.'
+    },
+    {
+      rangeSlug: 'pierreries',
+      languageId: japanese_id,
+      name: 'ピエルリー',
+      description: 'このシリーズのワインは、丘の麓や平野のブドウ畑から作られています。アルザスの7つのブドウ品種それぞれの特徴を表現しています。香り高く表現力豊かなこれらのワインは、その新鮮さ、バランス、風味で高く評価されています。'
+    }
+  ])
+
+  console.log('✅ Pierreries translations')
+
+  await db.insert(rangeTranslationTable).values([
+    {
+      rangeSlug: 'pierres_precieuses',
+      languageId: french_id,
+      name: 'Les Pierres Précieuses',
+      description: 'Issus de nos précieux terroirs et nos vieilles vignes magnifiées par le temps, les vins de cette gamme vous offriront une plus grande profondeur. Charpenté mais subtil, leur bouquet vous étonnera par son intensité et sa finesse.'
+    },
+    {
+      rangeSlug: 'pierres_precieuses',
+      languageId: english_id,
+      name: 'The Precious Stones',
+      description: 'From our precious terroirs and our old vines magnified by time, the wines in this range will offer you greater depth. Structured but subtle, their bouquet will amaze you with its intensity and finesse.'
+    },
+    {
+      rangeSlug: 'pierres_precieuses',
+      languageId: japanese_id,
+      name: 'プレシャスストーン',
+      description: '私たちの貴重なテロワールと時間によって磨かれた古木から、このシリーズのワインはより深みのある味わいを提供します。骨格がありながらも繊細で、その強さと洗練さで驚かせるブーケを持っています。'
+    }
+  ])
+
+  console.log('✅ Pierres Précieuses translations')
+
+  await db.insert(rangeTranslationTable).values([
+    {
+      rangeSlug: 'grands_crus',
+      languageId: french_id,
+      name: 'Les Grands Crus',
+      description: 'À Eguisheim, les meilleures parcelles ont été sélectionnées pour élaborer les Grands Crus. On y trouve le Eichberg et le Pfersigberg. Véritable terres d\'excellence, on y produit des vins au caractère incomparable qui reflètent la richesse et l\'authenticité de nos terroirs.'
+    },
+    {
+      rangeSlug: 'grands_crus',
+      languageId: english_id,
+      name: 'The Grand Crus',
+      description: 'In Eguisheim, the best plots have been selected to produce the Grand Crus. There you will find Eichberg and Pfersigberg. True lands of excellence, they produce wines with an incomparable character that reflect the richness and authenticity of our terroirs.'
+    },
+    {
+      rangeSlug: 'grands_crus',
+      languageId: japanese_id,
+      name: 'グラン・クリュ',
+      description: 'エギスハイムでは、グラン・クリュを生産するために最高の区画が選ばれました。そこにはアイヒベルグとフェルジグベルグがあります。真の卓越した土地で、私たちのテロワールの豊かさと真正性を反映した比類のない個性を持つワインを生産しています。'
+    }
+  ])
+
+  console.log('✅ Grands Crus translations')
+
+  await db.insert(rangeTranslationTable).values([
+    {
+      rangeSlug: 'vendanges_tardives',
+      languageId: french_id,
+      name: 'Les Vendanges Tardives',
+      description: 'Saint parmi les Saints, les vendanges tardives sont élaborés à partir de raisins atteint de pourriture noble (appelée aussi botrytis). Un tri sérieux et rigoureux sera à l\'essence même de ces nectars, rares et complexes. Aux arômes de fruits confits, ces vins liquoreux font partie des plus grands vins du monde.'
+    },
+    {
+      rangeSlug: 'vendanges_tardives',
+      languageId: english_id,
+      name: 'The Late Harvests',
+      description: 'Saint among Saints, late harvests are made from grapes affected by noble rot (also called botrytis). A serious and rigorous sorting will be the very essence of these nectars, rare and complex. With aromas of candied fruits, these sweet wines are among the greatest wines in the world.'
+    },
+    {
+      rangeSlug: 'vendanges_tardives',
+      languageId: japanese_id,
+      name: '遅摘み',
+      description: '聖なる中の聖なるもの、遅摘みは貴腐（ボトリティスとも呼ばれる）に影響されたブドウから作られます。厳格で厳密な選別がこれらの希少で複雑な蜜の本質となります。コンフィチュールの香りがするこれらの甘口ワインは、世界最高のワインの一つです。'
+    }
+  ])
+
+  console.log('✅ Vendanges Tardives translations')
+
+  console.log('🌐 Range translation data inserted successfully!')
+}
+
 export {
   insertRange,
   insertLanguage,
   insertWine,
   insertWineTranslation,
+  insertRangeTranslation,
 }

@@ -1,5 +1,6 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
+import cors from 'cors'
 import swaggerSpec from './swagger.config.js'
 import wineRoutes from './routes/wine.js';
 
@@ -7,6 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors());
 app.use('/api/wine', wineRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
