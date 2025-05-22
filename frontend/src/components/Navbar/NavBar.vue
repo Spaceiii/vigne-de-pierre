@@ -30,7 +30,11 @@ const toggleI18N = () => {
         </router-link>
       </div>
       <div class="right">
-        <button @click="toggleI18N">jgepfz</button>
+        <select name="language" id="language" v-model="locale">
+          <option value="fr" :selected="locale === 'fr'">Français</option>
+          <option value="en" :selected="locale === 'en'">English</option>
+          <option value="jp" :selected="locale === 'jp'">日本語</option>
+        </select>
       </div>
     </nav>
     <nav class="sub-nav" v-if="needNav">

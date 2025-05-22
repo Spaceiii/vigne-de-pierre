@@ -13,6 +13,7 @@ interface WineTranslation {
   tasting: string;
   conservation: string;
   suggestion: string;
+  rangeSlug: string;
 }
 
 /**

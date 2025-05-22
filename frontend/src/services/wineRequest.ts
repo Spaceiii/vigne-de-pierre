@@ -10,10 +10,10 @@ async function getWines(): Promise<Wine[]> {
   return data
 }
 
-async function getTranslationWine(slug: string): Promise<WineTranslation> {
-  const { data, error, status } = await getRequest(`/wine/details/${slug}`)
+async function getTranslationWine(slug: string, languageCode: string): Promise<WineTranslation> {
+  const { data, error, status } = await getRequest(`/wine/translation/${languageCode}/${slug}`)
   if (error) {
-    throw new Error('Error fetching wine translation')
+    throw new Error(`Error fetching wine translation for language ${languageCode}`)
   }
   return data
 }

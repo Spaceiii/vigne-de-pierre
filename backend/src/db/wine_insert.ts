@@ -170,7 +170,7 @@ async function insertLanguage() {
     },
     {
       name: 'Japanese',
-      code: 'ja'
+      code: 'jp'
     }
   ])
 
@@ -182,7 +182,7 @@ async function insertWineTranslation() {
 
   const french_id = (await selectOnlyOne(await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, 'fr')))).id
   const english_id = (await selectOnlyOne(await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, 'en')))).id
-  const japanese_id = (await selectOnlyOne(await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, 'ja')))).id
+  const japanese_id = (await selectOnlyOne(await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, 'jp')))).id
 
   await db.insert(wineTranslationTable).values([
     {
@@ -756,7 +756,7 @@ async function insertRangeTranslation() {
 
   const french_id = (await selectOnlyOne(await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, 'fr')))).id
   const english_id = (await selectOnlyOne(await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, 'en')))).id
-  const japanese_id = (await selectOnlyOne(await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, 'ja')))).id
+  const japanese_id = (await selectOnlyOne(await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, 'jp')))).id
 
   await db.insert(rangeTranslationTable).values([
     {

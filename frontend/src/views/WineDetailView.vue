@@ -1,46 +1,36 @@
 <template>
-  <section class="wrapper">
-    <div class="box">
-      <img :src="bigImage" :alt="range">
-    </div>
-
-    <div class="content">
-      <h1>{{ name }}</h1>
-      <p>{{ description }}</p>
-      <p><strong>{{ t('wine_page.tasting') }} :</strong> {{ tasting }}</p>
-      <p><strong>{{ t('wine_page.conservation') }} :</strong> {{ conservation }}</p>
-      <p><strong>{{ t('wine_page.suggestion') }} :</strong> {{ suggestion }}</p>
-    </div>
-  </section>
-
-  <div class="related-wines">
-    <div class="related-wines-title">
-      <div class="image-wrapper">
-        <img :src="imageRange" :alt="imageRange">
-      </div>
-      <h2>{{ t('wine_page.related_wines') }} <span style="font-style: italic">{{ t(`wine.${range}.title`) }}</span></h2>
-    </div>
-    <div class="wine-cards">
-      <div v-for="wine in relatedWines" :key="wine.slug" class="wine-card">
-        <router-link :to="`/wine/${wine.slug}`">
-          <div class="wine-card-content">
-            <h3>{{ wine.name }}</h3>
-          </div>
-        </router-link>
-      </div>
-    </div>
+  <div v-if="loading" class="loading">
+    <p>{{ t('common.loading') }}</p>
   </div>
 
-  <div class="other-wines">
-    <h2 class="other-wines-title">{{ t('wine_page.other_wines') }}</h2>
-    <div v-for="(wines, range) in otherWines" :key="range" class="wine-range">
-      <div class="wine-card-title">
+  <div v-else-if="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div v-else>
+    <section class="wrapper">
+      <div class="box">
+        <img :src="bigImage" :alt="range">
+      </div>
+
+      <div class="content">
+        <h1>{{ name }}</h1>
+        <p>{{ description }}</p>
+        <p><strong>{{ t('wine_page.tasting') }} :</strong> {{ tasting }}</p>
+        <p><strong>{{ t('wine_page.conservation') }} :</strong> {{ conservation }}</p>
+        <p><strong>{{ t('wine_page.suggestion') }} :</strong> {{ suggestion }}</p>
+      </div>
+    </section>
+
+    <div class="related-wines">
+      <div class="related-wines-title">
         <div class="image-wrapper">
-          <img :src="wines.pierre" :alt="wines.pierre">
+          <img :src="imageRange" :alt="range">
         </div>
-        {{ t(`wine.${range}.title`) }}</div>
+        <h2>{{ t('wine_page.related_wines') }} <span style="font-style: italic">{{ allWinesData && range ? allWinesData[range].name : '' }}</span></h2>
+      </div>
       <div class="wine-cards">
-        <div v-for="wine in wines.wines" :key="wine.slug" class="wine-card">
+        <div v-for="wine in relatedWines" :key="wine.slug" class="wine-card">
           <router-link :to="`/wine/${wine.slug}`">
             <div class="wine-card-content">
               <h3>{{ wine.name }}</h3>
@@ -49,11 +39,32 @@
         </div>
       </div>
     </div>
+
+    <div class="other-wines">
+      <h2 class="other-wines-title">{{ t('wine_page.other_wines') }}</h2>
+      <div v-for="(wines, rangeSlug) in otherWines" :key="rangeSlug" class="wine-range">
+        <div class="wine-card-title">
+          <div class="image-wrapper">
+            <img :src="wines.pierre" :alt="rangeSlug">
+          </div>
+          {{ allWinesData && allWinesData[rangeSlug] ? allWinesData[rangeSlug].name : rangeSlug }}
+        </div>
+        <div class="wine-cards">
+          <div v-for="wine in wines.wines" :key="wine.slug" class="wine-card">
+            <router-link :to="`/wine/${wine.slug}`">
+              <div class="wine-card-content">
+                <h3>{{ wine.name }}</h3>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import ImagePierreries from '@/assets/wine_range/pierreries-big.jpg'
@@ -66,43 +77,71 @@ import PierrePierresPrecieuses from '@/assets/wine_range/pierres_precieuses.jpg'
 import PierreGrandsCrus from '@/assets/wine_range/grands_crus.jpg'
 import PierreVendangesTardives from '@/assets/wine_range/vendanges_tardives.jpg'
 
-import wineData from '@/data/wine.json'
+import { getTranslationWine, getWinesByLanguage } from '@/services/wineRequest'
+import type { WinesByRange, WineTranslation } from '@/types/wine'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const { id } = defineProps({
   id: { type: String, required: true },
 })
 
-const name = computed(() => t(`wine_list.${id}.name`))
-const description = computed(() => t(`wine_list.${id}.description`))
-const tasting = computed(() => t(`wine_list.${id}.tasting`))
-const conservation = computed(() => t(`wine_list.${id}.conservation`))
-const suggestion = computed(() => t(`wine_list.${id}.suggestion`))
-const range = computed(() => t(`wine_list.${id}.range`))
+const wineData = ref<WineTranslation | null>(null)
+const allWinesData = ref<WinesByRange | null>(null)
+const loading = ref(true)
+const error = ref<string | null>(null)
+
+watchEffect(async () => {
+  console.log(`Current locale: ${locale.value}`)
+  loading.value = true
+  error.value = null
+
+  try {
+    wineData.value = await getTranslationWine(id, locale.value)
+
+    allWinesData.value = await getWinesByLanguage(locale.value)
+  } catch (err) {
+    console.error('Error fetching wine data:', err)
+    error.value = 'Failed to load wine data'
+  } finally {
+    loading.value = false
+  }
+})
+
+const name = computed(() => wineData.value?.name || '')
+const description = computed(() => wineData.value?.description || '')
+const tasting = computed(() => wineData.value?.tasting || '')
+const conservation = computed(() => wineData.value?.conservation || '')
+const suggestion = computed(() => wineData.value?.suggestion || '')
+const range = computed(() => wineData.value?.rangeSlug || '')
 
 const bigImage = ref('')
-const imageRange = getPierreImage(range.value)
+const imageRange = computed(() => getPierreImage(range.value))
 
-if (range.value === 'pierreries') {
-  bigImage.value = ImagePierreries
-} else if (range.value === 'pierres_precieuses') {
-  bigImage.value = ImagePierresPrecieuses
-} else if (range.value === 'grands_crus') {
-  bigImage.value = ImageGrandsCrus
-} else if (range.value === 'vendanges_tardives') {
-  bigImage.value = ImageVendangesTardives
-} else {
-  console.error(`Unknown wine range: ${range}`)
-}
+watchEffect(() => {
+  if (range.value === 'pierreries') {
+    bigImage.value = ImagePierreries
+  } else if (range.value === 'pierres_precieuses') {
+    bigImage.value = ImagePierresPrecieuses
+  } else if (range.value === 'grands_crus') {
+    bigImage.value = ImageGrandsCrus
+  } else if (range.value === 'vendanges_tardives') {
+    bigImage.value = ImageVendangesTardives
+  } else if (range.value) {
+    console.error(`Unknown wine range: ${range.value}`)
+  }
+})
 
 const relatedWines = computed(() => {
-  const rangeData = wineData.find(data => data.range_id === range.value.toLowerCase())
+  if (!allWinesData.value || !range.value) return []
+
+  // Get wines from the same range
+  const rangeData = allWinesData.value[range.value]
   if (!rangeData) return []
 
-  return rangeData.wines_slug.map(slug => ({
-    slug,
-    name: t(`wine_list.${slug}.name`),
+  return rangeData.wines.map(wine => ({
+    slug: wine.wineSlug,
+    name: wine.name
   }))
 })
 
@@ -117,20 +156,23 @@ interface RangeInfo {
 }
 
 const otherWines = computed(() => {
-  const otherRanges = wineData.filter(data => data.range_id !== range.value.toLowerCase())
+  if (!allWinesData.value || !range.value) return {}
 
-  const createWineInfo = (slug: string): WineInfo => ({
-    slug,
-    name: t(`wine_list.${slug}.name`)
+  const result: Record<string, RangeInfo> = {}
+
+  Object.entries(allWinesData.value).forEach(([rangeSlug, rangeData]) => {
+    if (rangeSlug === range.value) return
+
+    result[rangeSlug] = {
+      wines: rangeData.wines.map(wine => ({
+        slug: wine.wineSlug,
+        name: wine.name
+      })),
+      pierre: getPierreImage(rangeSlug)
+    }
   })
 
-  return otherRanges.reduce<Record<string, RangeInfo>>((acc, data) => ({
-    ...acc,
-    [data.range_id]: {
-      wines: data.wines_slug.map(createWineInfo),
-      pierre: getPierreImage(data.range_id)
-    }
-  }), {})
+  return result
 })
 
 function getPierreImage(range: string) {
@@ -151,6 +193,20 @@ function getPierreImage(range: string) {
 </script>
 
 <style scoped>
+.loading, .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.error {
+  color: #e74c3c;
+}
+
 .wrapper {
   display: flex;
   flex-direction: row;
