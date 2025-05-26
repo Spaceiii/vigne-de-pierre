@@ -1,40 +1,94 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { onMounted, ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import WineRange from "@/components/Wine/WineRange.vue";
-const { t } = useI18n()
+import { getWinesByRangeTranslation } from '@/services/wineRequest'
+import type { RangeTranslationWithWines } from '@/types/wine'
+const { t, locale } = useI18n()
 
 import PierreriesImage from '@/assets/wine_range/pierreries-big.jpg'
 import PierresPrecieusesImage from '@/assets/wine_range/pierres_precieuses-big.jpg'
 import GrandsCrusImage from '@/assets/wine_range/grands_crus-big.jpg'
 import VendangesTardivesImage from '@/assets/wine_range/vendanges_tardives-big.jpg'
 
-import wineData from '@/data/wine.json'
+import PetitePierreriesImage from '@/assets/wine_range/pierreries.jpg'
+import PetitePierresPrecieusesImage from '@/assets/wine_range/pierres_precieuses.jpg'
+import PetiteGrandsCrusImage from '@/assets/wine_range/grands_crus.jpg'
+import PetiteVendangesTardivesImage from '@/assets/wine_range/vendanges_tardives.jpg'
 
-
+const rangeData = ref<RangeTranslationWithWines[]>([])
 const activeSection = ref('')
+const isLoading = ref(true)
 
-onMounted(() => {
-  const sections = document.querySelectorAll('.wine-range[id]')
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          activeSection.value = entry.target.id
-        }
-      })
-    },
-    { threshold: 0.6 },
-  )
+const rangeImages: Record<string, string> = {
+  pierreries: PierreriesImage,
+  pierres_precieuses: PierresPrecieusesImage,
+  grands_crus: GrandsCrusImage,
+  vendanges_tardives: VendangesTardivesImage
+}
 
-  sections.forEach((section) => observer.observe(section))
+const petiteRangeImages: Record<string, string> = {
+  pierreries: PetitePierreriesImage,
+  pierres_precieuses: PetitePierresPrecieusesImage,
+  grands_crus: PetiteGrandsCrusImage,
+  vendanges_tardives: PetiteVendangesTardivesImage
+}
+
+// Function to fetch range data
+const fetchRangeData = async () => {
+  isLoading.value = true
+  try {
+    rangeData.value = await getWinesByRangeTranslation(locale.value)
+  } catch (error) {
+    console.error('Error fetching wine range data:', error)
+    rangeData.value = []
+  } finally {
+    isLoading.value = false
+  }
+}
+
+// Set up intersection observer for scrolling
+const setupIntersectionObserver = () => {
+  setTimeout(() => {
+    const sections = document.querySelectorAll('.wine-range[id]')
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            activeSection.value = entry.target.id
+          }
+        })
+      },
+      { threshold: 0.6 },
+    )
+    sections.forEach((section) => observer.observe(section))
+  }, 100)
+}
+
+const wineDataByRange = ref<{[key: string]: string[]}>({})
+
+// Watch for locale changes, update data and transform it
+watchEffect(async () => {
+  // Step 1: Fetch the range data when locale changes
+  await fetchRangeData()
+
+  // Step 2: Transform rangeData into wineDataByRange
+  if (!rangeData.value || rangeData.value.length === 0) {
+    wineDataByRange.value = {}
+  } else {
+    wineDataByRange.value = rangeData.value.reduce((acc: {[key: string]: string[]}, range) => {
+      if (range.wines && range.wines.length > 0) {
+        acc[range.slug] = range.wines.map(wine => wine.nativeName.toLowerCase().replace(/ /g, '_'))
+      }
+      return acc
+    }, {})
+  }
+
+  // Step 3: Set up the intersection observer after data is loaded
+  if (!isLoading.value) {
+    setupIntersectionObserver()
+  }
 })
-
-const wineDataByRange = wineData.reduce((acc: {[key: string]: string[]}, data) => {
-  const range = data.range_id.toLowerCase()
-  acc[range] = data.wines_slug
-  return acc
-}, {})
 
 const scrollToSection = (id: string) => {
   const section = document.getElementById(id)
@@ -46,100 +100,52 @@ const scrollToSection = (id: string) => {
 
 <template>
   <main>
-    <nav class="sidebar">
-      <h2>{{ t('wine.range') }}</h2>
-
-      <div class="language-link">
-        <router-link to="/wine/language" class="language-button">
-          {{ t('wine.view_by_language') }}
-        </router-link>
-      </div>
-
-      <a
-        :class="{ active: activeSection === 'pierreries' }"
-        href="#pierreries"
-        @click="scrollToSection('pierreries')"
-      >
-        <div class="img-container">
-          <div class="img-wrapper">
-            <img src="@/assets/wine_range/pierreries.jpg" alt="Les pierreries" />
-          </div>
-        </div>
-        {{ t('wine.pierreries.title') }}</a
-      >
-      <a
-        :class="{ active: activeSection === 'pierres_precieuses' }"
-        href="#pierres_precieuses"
-        @click="scrollToSection('pierres_precieuses')"
-      >
-        <div class="img-container">
-          <div class="img-wrapper">
-            <img src="@/assets/wine_range/pierres_precieuses.jpg" alt="Les pierres précieuses" />
-          </div>
-        </div>
-        {{ t('wine.pierres_precieuses.title') }}</a
-      >
-      <a
-        :class="{ active: activeSection === 'grands_crus' }"
-        href="#grands_crus"
-        @click="scrollToSection('grands_crus')"
-      >
-        <div class="img-container">
-          <div class="img-wrapper">
-            <img src="@/assets/wine_range/grands_crus.jpg" alt="Les grands crus" />
-          </div>
-        </div>
-        {{ t('wine.grands_crus.title') }}</a
-      >
-      <a
-        :class="{ active: activeSection === 'vendanges_tardives' }"
-        href="#vendanges_tardives"
-        @click="scrollToSection('vendanges_tardives')"
-      >
-        <div class="img-container">
-          <div class="img-wrapper">
-            <img src="@/assets/wine_range/vendanges_tardives.jpg" alt="Les vendanges tardives" />
-          </div>
-        </div>
-        {{ t('wine.vendanges_tardives.title') }}</a
-      >
-    </nav>
-    <div class="wrapper">
-      <h1>{{ t('wine.title') }}</h1>
-      <section>
-        <WineRange
-          id="pierreries"
-          :title="t('wine.pierreries.title')"
-          :image-src="PierreriesImage"
-          :image-alt="t('wine.pierreries.title')"
-          :description="t('wine.pierreries.description')"
-          :wineSlug="wineDataByRange.pierreries"/>
-
-        <WineRange
-          id="pierres_precieuses"
-          :title="t('wine.pierres_precieuses.title')"
-          :image-src="PierresPrecieusesImage"
-          :image-alt="t('wine.pierres_precieuses.title')"
-          :description="t('wine.pierres_precieuses.description')"
-          :wineSlug="wineDataByRange.pierres_precieuses"/>
-
-        <WineRange
-          id="grands_crus"
-          :title="t('wine.grands_crus.title')"
-          :image-src="GrandsCrusImage"
-          :image-alt="t('wine.grands_crus.title')"
-          :description="t('wine.grands_crus.description')"
-          :wineSlug="wineDataByRange.grands_crus"/>
-
-        <WineRange
-          id="vendanges_tardives"
-          :title="t('wine.vendanges_tardives.title')"
-          :image-src="VendangesTardivesImage"
-          :image-alt="t('wine.vendanges_tardives.title')"
-          :description="t('wine.vendanges_tardives.description')"
-          :wineSlug="wineDataByRange.vendanges_tardives"/>
-      </section>
+    <div v-if="isLoading" class="loading-container">
+      <p>{{ t('common.loading') }}</p>
     </div>
+
+    <template v-else>
+      <nav class="sidebar">
+        <h2>{{ t('wine.range') }}</h2>
+
+        <a
+          v-for="range in rangeData"
+          :key="range.slug"
+          :class="{ active: activeSection === range.slug }"
+          :href="`#${range.slug}`"
+          @click="scrollToSection(range.slug)"
+        >
+          <div class="img-container">
+            <div class="img-wrapper">
+              <img :src="petiteRangeImages[range.slug]" :alt="range.name" />
+            </div>
+          </div>
+          {{ range.name }}</a
+        >
+      </nav>
+
+      <div class="wrapper">
+        <h1>{{ t('wine.title') }}</h1>
+        <section>
+          <template v-if="rangeData.length === 0">
+            <p class="no-data">{{ t('wine.no_data') }}</p>
+          </template>
+
+          <template v-else>
+            <WineRange
+              v-for="range in rangeData"
+              :key="range.slug"
+              :id="range.slug"
+              :title="range.name"
+              :image-src="rangeImages[range.slug]"
+              :image-alt="range.name"
+              :description="range.description"
+              :wineSlug="wineDataByRange[range.slug] || []"
+            />
+          </template>
+        </section>
+      </div>
+    </template>
   </main>
 </template>
 
@@ -268,5 +274,24 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 100%;
+  font-size: 1.2rem;
+  color: #555;
+  font-style: italic;
+}
+
+.no-data {
+  text-align: center;
+  padding: 2rem;
+  color: #555;
+  font-style: italic;
+  font-size: 1.2rem;
 }
 </style>

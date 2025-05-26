@@ -1,9 +1,14 @@
 import { getRequest, postRequest, putRequest, deleteRequest } from '@/services/axios.ts'
 
-import type { Wine, WineTranslation, WinesByRange } from '@/types/wine.ts'
+import type {
+  Wine,
+  WineTranslation,
+  WinesByRange,
+  RangeTranslationWithWines
+} from '@/types/wine.ts'
 
 async function getWines(): Promise<Wine[]> {
-  const { data, error, status } = await getRequest('/wine/all_wines')
+  const { data, error } = await getRequest('/wine/all_wines')
   if (error) {
     throw new Error('Error fetching wines')
   }
@@ -11,7 +16,7 @@ async function getWines(): Promise<Wine[]> {
 }
 
 async function getTranslationWine(slug: string, languageCode: string): Promise<WineTranslation> {
-  const { data, error, status } = await getRequest(`/wine/translation/${languageCode}/${slug}`)
+  const { data, error} = await getRequest(`/wine/translation/${languageCode}/${slug}`)
   if (error) {
     throw new Error(`Error fetching wine translation for language ${languageCode}`)
   }
@@ -20,7 +25,7 @@ async function getTranslationWine(slug: string, languageCode: string): Promise<W
 
 
 async function getWine(slug: string): Promise<Wine> {
-  const { data, error, status } = await getRequest(`/wine/details/${slug}`)
+  const { data, error } = await getRequest(`/wine/details/${slug}`)
   if (error) {
     throw new Error('Error fetching wine')
   }
@@ -29,12 +34,23 @@ async function getWine(slug: string): Promise<Wine> {
 
 
 async function postWine(wine: Wine): Promise<Wine> {
-  const { data, error, status } = await postRequest('/wine/create', wine)
+  const { data, error} = await postRequest('/wine/create', wine)
   if (error) {
     throw new Error('Error creating wine')
   }
   return data
 }
+
+
+// get route /api/wine/range/translation/{languageCode}
+async function getWinesByRangeTranslation(languageCode: string): Promise<RangeTranslationWithWines> {
+  const { data, error } = await getRequest(`/wine/range/translation/${languageCode}`)
+  if (error) {
+    throw new Error(`Error fetching range translations for language ${languageCode}`)
+  }
+  return data
+}
+
 
 /**
  * Fetches all wines with translations for a specific language, grouped by range
@@ -73,4 +89,5 @@ export {
   getTranslationWine,
   postWine,
   getWinesByLanguage,
+  getWinesByRangeTranslation
 }

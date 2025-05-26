@@ -16,6 +16,18 @@ interface WineTranslation {
   rangeSlug: string;
 }
 
+interface RangeTranslationWithWines {
+  name: string
+  description: string
+  languageId: number
+  slug: string
+  wines?: Array<{
+    name: string
+    nativeName: string
+    price: number
+  }>
+}
+
 /**
  * Interface for the response from the /wine/translation/{code} endpoint
  * Keys are range slugs and values are objects containing range information and an array of wine objects with translations
@@ -37,4 +49,4 @@ interface WinesByRange {
   };
 }
 
-export type { Wine, WineTranslation, WinesByRange }
+export type { Wine, WineTranslation, WinesByRange, RangeTranslationWithWines }

@@ -14,10 +14,15 @@
 
         <p>
           <strong>{{ t('wine.presentation') }} : </strong>
-          <template v-for="wine in wineNames.slice(0, wineNames.length - 1)" :key="wine">
-            {{ wine }},
+          <template v-if="wineNames.length > 0">
+            <template v-for="wine in wineNames.slice(0, wineNames.length - 1)" :key="wine">
+              {{ wine }},
+            </template>
+            {{ wineNames[wineNames.length - 1] }}
           </template>
-          {{ wineNames[wineNames.length - 1] }}
+          <template v-else>
+            {{ t('wine.no_wines') }}
+          </template>
         </p>
 
         <button class="btn btn-primary" @click="toggleWineList">{{ t('wine.range_details') }}</button>
@@ -26,13 +31,18 @@
 
     <transition name="slide-fade">
       <div v-show="showWineCards" class="wine-cards">
-        <div v-for="wine in wineInfo" :key="wine.slug" class="wine-card">
-          <router-link :to="`/wine/${wine.slug}`">
-            <div class="wine-card-content">
-              <h3>{{ wine.name }}</h3>
-            </div>
-          </router-link>
+        <div v-if="isLoading" class="loading-indicator">
+          {{ t('common.loading') }}
         </div>
+        <template v-else>
+          <div v-for="wine in wineInfo" :key="wine.slug" class="wine-card">
+            <router-link :to="`/wine/${wine.slug}`">
+              <div class="wine-card-content">
+                <h3>{{ wine.name }}</h3>
+              </div>
+            </router-link>
+          </div>
+        </template>
       </div>
     </transition>
   </div>
@@ -40,8 +50,9 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { computed, ref } from 'vue'
-const { t } = useI18n()
+import { computed, ref, onMounted } from 'vue'
+import { getWinesByLanguage } from '@/services/wineRequest'
+const { t, locale } = useI18n()
 
 const {
   id,
@@ -67,18 +78,61 @@ const toggleWineList = () => {
   showWineCards.value = !showWineCards.value;
 };
 
-const wineInfo = computed(() => wineSlug.map((wine) => {
-  return {
-    name: t(`wine_list.${wine}.name`),
-    slug: wine,
-    description: t(`wine_list.${wine}.description`),
-    tasting: t(`wine_list.${wine}.tasting`),
-    conservation: t(`wine_list.${wine}.conservation`),
-    suggestion: t(`wine_list.${wine}.suggestion`),
-  }
-}))
+const wineTranslations = ref<any[]>([])
+const isLoading = ref(true)
 
-const wineNames = wineInfo.value.map((wine) => wine.name)
+onMounted(async () => {
+  try {
+    // Fetch wine translations for the current language
+    const data = await getWinesByLanguage(locale.value)
+
+    // Find the range data that matches our id
+    const rangeData = data[id]
+
+    if (rangeData && rangeData.wines) {
+      // Filter wines to only include those in our wineSlug array
+      wineTranslations.value = rangeData.wines.filter(wine => {
+        // Convert wine's native name to match the format in wineSlug
+        const formattedName = wine.nativeName.toLowerCase().replace(/ /g, '_')
+        return wineSlug.includes(formattedName) || wineSlug.includes(wine.wineSlug)
+      })
+    }
+  } catch (error) {
+    console.error(`Error fetching wine translations for range ${id}:`, error)
+  } finally {
+    isLoading.value = false
+  }
+})
+
+const wineInfo = computed(() => {
+  // If we have translations from the API, use those
+  if (wineTranslations.value.length > 0) {
+    return wineTranslations.value.map(wine => ({
+      name: wine.name,
+      slug: wine.wineSlug,
+      description: wine.description,
+      tasting: wine.tasting,
+      conservation: wine.conservation,
+      suggestion: wine.suggestion,
+    }))
+  }
+
+  // Fallback to i18n translations if API data is not available
+  return wineSlug.map((wineIdentifier) => {
+    // The wineIdentifier is the formatted native name (lowercase with underscores)
+    // We use it directly as the key for i18n translations
+    return {
+      name: t(`wine_list.${wineIdentifier}.name`),
+      slug: wineIdentifier,
+      description: t(`wine_list.${wineIdentifier}.description`),
+      tasting: t(`wine_list.${wineIdentifier}.tasting`),
+      conservation: t(`wine_list.${wineIdentifier}.conservation`),
+      suggestion: t(`wine_list.${wineIdentifier}.suggestion`),
+    }
+  })
+})
+
+const wineNames = computed(() => wineInfo.value.map(wine => wine.name))
 </script>
 
 <style scoped>
@@ -192,6 +246,14 @@ const wineNames = wineInfo.value.map((wine) => wine.name)
   opacity: 0;
   transform: translateY(-20px);
   max-height: 0;
+}
+
+.loading-indicator {
+  text-align: center;
+  padding: 1rem;
+  color: #555;
+  font-style: italic;
+  grid-column: 1 / -1;
 }
 
 </style>

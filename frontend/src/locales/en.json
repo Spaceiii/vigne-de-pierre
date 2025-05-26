@@ -70,10 +70,14 @@
       "content_0": "Our tasting cellar is a convivial place that showcases the culmination of our work. Through these glasses of wine, one can perceive the vigilance of the winemaker, the smile of the harvester, the effort of the presser, and the passion of the cellar master.<br><br><strong>Opening Hours</strong>: Monday to Saturday from 8 a.m. to 12 p.m. and 1:30 p.m. to 7 p.m.<br>Closed on Sundays<br><br><strong>Group visits</strong>: Up to 70 people — guided tour of the old town, museum visit, and wine tasting with kougelhopf. You can also discover the vineyard trail."
     }
   },
+  "common": {
+    "loading": "Loading..."
+  },
   "wine": {
     "title": "An Exceptional Wine",
     "range": "Our Wine Range",
     "range_details": "See the Wines",
+    "no_data": "No data available",
     "presentation": "Our Wines",
     "description": "Discover our range of Alsace wines, crafted with passion and expertise.",
     "pierreries": {

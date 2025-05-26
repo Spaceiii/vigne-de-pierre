@@ -95,6 +95,81 @@ router.get('/range/:slug', async (req, res) => {
 })
 
 
+// get range by slug translation
+
+/**
+ * @swagger
+ * /api/wine/range/translation/{code}:
+ *   get:
+ *     tags:
+ *       - Vins
+ *     summary: Récupère la traduction de toute les gammes de vins pour une langue spécifique et traduits
+ *     parameters:
+ *       - name: code
+ *         in: path
+ *         required: true
+ *         description: Code de la langue à récupérer
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Traduction trouvée avec succès
+ *       404:
+ *         description: Traduction non trouvée
+ */
+router.get('/range/translation/:code', async (req, res) => {
+  const { code } = req.params
+  type RangeTranslation = {
+    name: string
+    description: string
+    languageId: number
+    slug: string
+    wines?: Array<{
+      name: string
+      nativeName: string
+      price: number
+    }>
+  }
+
+  const translations: RangeTranslation[] =
+    await db
+      .select({
+        name: rangeTranslationTable.name,
+        description: rangeTranslationTable.description,
+        languageId: rangeTranslationTable.languageId,
+        slug: rangeTable.slug
+      })
+      .from(rangeTranslationTable)
+      .where(eq(languageTable.code, code))
+      .innerJoin(languageTable, eq(rangeTranslationTable.languageId, languageTable.id))
+      .innerJoin(rangeTable, eq(rangeTranslationTable.rangeSlug, rangeTable.slug))
+
+  for (const translation of translations) {
+    translation.wines = await db
+      .select({
+        name: wineTranslationTable.name,
+        nativeName: wineTable.nativeName,
+        price: wineTable.price
+      })
+      .from(wineTranslationTable)
+      .where(and(
+        eq(wineTranslationTable.languageId, translation.languageId),
+        eq(wineTranslationTable.wineSlug, wineTable.slug),
+        eq(wineTable.rangeSlug, translation.slug)
+      ))
+      .innerJoin(wineTable, eq(wineTranslationTable.wineSlug, wineTable.slug))
+  }
+  console.log(`🔎 Selecting range translations for language ${code}`)
+  if (translations.length === 0) {
+    res.status(404).json({ message: 'Translation not found' })
+    console.error(`❌ Translation not found for language ${code}`)
+    return
+  }
+  console.log(`✅ Translations found for language ${code}`)
+  res.status(200).json(translations)
+})
+
+
 /**
  * @swagger
  * /api/wine/translation/{code}/{slug}:
