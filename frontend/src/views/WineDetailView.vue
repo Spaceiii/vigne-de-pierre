@@ -19,6 +19,10 @@
         <p><strong>{{ t('wine_page.tasting') }} :</strong> {{ tasting }}</p>
         <p><strong>{{ t('wine_page.conservation') }} :</strong> {{ conservation }}</p>
         <p><strong>{{ t('wine_page.suggestion') }} :</strong> {{ suggestion }}</p>
+
+        <button class="wine-reservation">
+          {{ t('wine_page.reserve_wine') }}
+        </button>
       </div>
     </section>
 
@@ -350,5 +354,18 @@ function getPierreImage(range: string) {
 
 .wine-card a {
   text-decoration: none;
+}
+
+.wine-reservation {
+  background-color: #297e00;
+  color: #fff;
+  margin-top: 2rem;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 </style>

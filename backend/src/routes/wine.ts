@@ -4,6 +4,8 @@ import { drizzle } from 'drizzle-orm/node-postgres'
 import { languageTable, rangeTable, rangeTranslationTable, wineTable, wineTranslationTable } from '../db/schema.js'
 import { eq, and } from 'drizzle-orm'
 import express from 'express'
+import { authRequired } from '../middleware/authRequired.js'
+import { adminOnly } from '../middleware/adminOnly.js'
 
 
 const router = express.Router()
@@ -358,7 +360,7 @@ router.get('/translation/:code', async (req, res) => {
  *       500:
  *         description: Erreur interne du serveur
  */
-router.post('/range/create', async (req, res) => {
+router.post('/range/create', authRequired, adminOnly, async (req, res) => {
   const {
     name,
     slug,
@@ -420,7 +422,7 @@ router.post('/range/create', async (req, res) => {
  *       500:
  *         description: Erreur interne du serveur
  */
-router.put('/range/update/:slug', async (req, res) => {
+router.put('/range/update/:slug', authRequired, adminOnly, async (req, res) => {
   const { slug } = req.params
   const { name } = req.body
 
@@ -460,7 +462,7 @@ router.put('/range/update/:slug', async (req, res) => {
  *       500:
  *         description: Erreur interne du serveur
  */
-router.delete('/range/delete/:slug', async (req, res) => {
+router.delete('/range/delete/:slug', authRequired, adminOnly, async (req, res) => {
   const { slug } = req.params
 
   try {
@@ -517,7 +519,7 @@ router.delete('/range/delete/:slug', async (req, res) => {
  *       500:
  *         description: Erreur interne du serveur
  */
-router.post('/create', async (req, res) => {
+router.post('/create', authRequired, adminOnly, async (req, res) => {
   const {
     name,
     slug,
@@ -592,7 +594,7 @@ router.post('/create', async (req, res) => {
  *       500:
  *         description: Erreur interne du serveur
  */
-router.put('/update/:slug', async (req, res) => {
+router.put('/update/:slug', authRequired, adminOnly, async (req, res) => {
   const { slug } = req.params
   const { nativeName, price, rangeSlug } = req.body
 
@@ -645,7 +647,7 @@ router.put('/update/:slug', async (req, res) => {
  *       500:
  *         description: Erreur interne du serveur
  */
-router.delete('/delete/:slug', async (req, res) => {
+router.delete('/delete/:slug', authRequired, adminOnly, async (req, res) => {
   const { slug } = req.params
 
   try {
@@ -710,7 +712,7 @@ router.delete('/delete/:slug', async (req, res) => {
  *       500:
  *         description: Erreur interne du serveur
  */
-router.post('/translation/create', async (req, res) => {
+router.post('/translation/create', authRequired, adminOnly, async (req, res) => {
   const {
     name,
     slug,
@@ -797,7 +799,7 @@ router.post('/translation/create', async (req, res) => {
  *       500:
  *         description: Erreur interne du serveur
  */
-router.put('/translation/update/:id', async (req, res) => {
+router.put('/translation/update/:id', authRequired, adminOnly, async (req, res) => {
   const { id } = req.params
   const { name, description, tasting, conservation, suggestion } = req.body
 
@@ -858,7 +860,7 @@ router.put('/translation/update/:id', async (req, res) => {
  *       500:
  *         description: Erreur interne du serveur
  */
-router.delete('/translation/delete/:id', async (req, res) => {
+router.delete('/translation/delete/:id', authRequired, adminOnly, async (req, res) => {
   const { id } = req.params
 
   try {
@@ -911,7 +913,7 @@ router.delete('/translation/delete/:id', async (req, res) => {
  *       500:
  *         description: Erreur interne du serveur
  */
-router.put('/language/update/:id', async (req, res) => {
+router.put('/language/update/:id', authRequired, adminOnly, async (req, res) => {
   const { id } = req.params
   const { name, code } = req.body
 

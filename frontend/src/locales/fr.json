@@ -240,7 +240,9 @@
     "conservation": "Conservation",
     "suggestion": "Suggestion",
     "related_wines": "Autres vins de la gamme",
-    "other_wines": "Autres vins"
+    "other_wines": "Autres vins",
+    "reserve_wine": "Réserver ce vin",
+    "reserve_visit": "Réserver une visite"
   },
   "accommodation": {
     "title": "Nous accueillons les campings-caristes !",
@@ -266,7 +268,27 @@
     "group_3": "Possibilité de découvrir également le sentier viticole",
     "reservation": "Réserver une visite"
   },
+  "auth": {
+    "login": "Connexion",
+    "register": "Inscription",
 
+    "welcomeBack": "Bon retour",
+    "joinUs": "Rejoignez-nous",
+
+    "signInSubtitle": "Connectez-vous à votre compte",
+    "createAccountSubtitle": "Créez votre nouveau compte",
+
+    "emailPlaceholder": "Adresse email",
+    "passwordPlaceholder": "Mot de passe",
+    "firstNamePlaceholder": "Prénom",
+    "lastNamePlaceholder": "Nom",
+
+    "signIn": "Se connecter",
+    "createAccount": "Créer un compte",
+
+    "invalidCredentials": "Identifiants invalides. Veuillez réessayer.",
+    "registrationFailed": "Échec de l'inscription. Veuillez réessayer."
+  },
   "footer": {
     "prevention": "L'abus d'alcool est dangereux pour la santé. À consommer avec modération."
   }

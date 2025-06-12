@@ -42,7 +42,6 @@ async function postWine(wine: Wine): Promise<Wine> {
 }
 
 
-// get route /api/wine/range/translation/{languageCode}
 async function getWinesByRangeTranslation(languageCode: string): Promise<RangeTranslationWithWines> {
   const { data, error } = await getRequest(`/wine/range/translation/${languageCode}`)
   if (error) {
