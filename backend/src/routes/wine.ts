@@ -209,7 +209,8 @@ router.get('/translation/:code/:slug', async (req, res) => {
         conservation: wineTranslationTable.conservation,
         suggestion: wineTranslationTable.suggestion,
         rangeSlug: wineTable.rangeSlug,
-        nativeName: wineTable.nativeName
+        nativeName: wineTable.nativeName,
+        price: wineTable.price,
       })
       .from(wineTranslationTable)
       .where(and(

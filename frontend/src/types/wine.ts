@@ -14,6 +14,7 @@ interface WineTranslation {
   conservation: string;
   suggestion: string;
   rangeSlug: string;
+  price: number;
 }
 
 interface RangeTranslationWithWines {

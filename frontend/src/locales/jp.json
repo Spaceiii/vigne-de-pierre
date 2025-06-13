@@ -102,7 +102,9 @@
     "conservation": "熟成と保存",
     "suggestion": "おすすめの楽しみ方",
     "related_wines": "このシリーズの他のワイン",
-    "other_wines": "その他のワイン"
+    "other_wines": "その他のワイン",
+    "reserve_wine": "このワインを予約する",
+    "reserve_visit": "訪問を予約する"
   },
   "accommodation": {
     "title": "キャンピングカー旅行者の皆様を歓迎します！",
@@ -127,6 +129,27 @@
     "group_2": "クグロフ付きワインテイスティング",
     "group_3": "ぶどう畑散策コースも可能です",
     "reservation": "見学を予約する"
+  },
+  "auth": {
+    "login": "ログイン",
+    "register": "登録",
+
+    "welcomeBack": "おかえりなさい",
+    "joinUs": "参加する",
+
+    "signInSubtitle": "アカウントにログインしてください",
+    "createAccountSubtitle": "新しいアカウントを作成してください",
+
+    "emailPlaceholder": "メールアドレス",
+    "passwordPlaceholder": "パスワード",
+    "firstNamePlaceholder": "名",
+    "lastNamePlaceholder": "姓",
+
+    "signIn": "ログイン",
+    "createAccount": "アカウントを作成",
+
+    "invalidCredentials": "認証情報が無効です。もう一度お試しください。",
+    "registrationFailed": "登録に失敗しました。もう一度お試しください。"
   },
   "footer": {
     "prevention": "お酒は健康を損なう恐れがあります。適量を心がけましょう。"

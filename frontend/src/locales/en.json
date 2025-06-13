@@ -240,7 +240,9 @@
     "conservation": "Cellaring",
     "suggestion": "Suggestion",
     "related_wines": "Other wines from this range",
-    "other_wines": "Other wines"
+    "other_wines": "Other wines",
+    "reserve_wine": "Reserve this wine",
+    "reserve_visit": "Book a visit"
   },
   "accommodation": {
     "title": "We welcome motorhome travellers!",
@@ -265,6 +267,27 @@
     "group_2": "Wine tasting with kougelhof",
     "group_3": "Also possible: discovery of the vineyard trail",
     "reservation": "Book a visit"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Sign Up",
+
+    "welcomeBack": "Welcome back",
+    "joinUs": "Join us",
+
+    "signInSubtitle": "Log in to your account",
+    "createAccountSubtitle": "Create your new account",
+
+    "emailPlaceholder": "Email address",
+    "passwordPlaceholder": "Password",
+    "firstNamePlaceholder": "First name",
+    "lastNamePlaceholder": "Last name",
+
+    "signIn": "Sign in",
+    "createAccount": "Create account",
+
+    "invalidCredentials": "Invalid credentials. Please try again.",
+    "registrationFailed": "Registration failed. Please try again."
   },
   "footer": {
     "prevention": "Excessive alcohol consumption is harmful to your health. Drink responsibly."

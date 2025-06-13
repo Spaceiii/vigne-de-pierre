@@ -20,7 +20,7 @@
         <p><strong>{{ t('wine_page.conservation') }} :</strong> {{ conservation }}</p>
         <p><strong>{{ t('wine_page.suggestion') }} :</strong> {{ suggestion }}</p>
 
-        <button class="wine-reservation">
+        <button class="wine-reservation" @click="addItemToCart">
           {{ t('wine_page.reserve_wine') }}
         </button>
       </div>
@@ -83,6 +83,7 @@ import PierreVendangesTardives from '@/assets/wine_range/vendanges_tardives.jpg'
 
 import { getTranslationWine, getWinesByLanguage } from '@/services/wineRequest'
 import type { WinesByRange, WineTranslation } from '@/types/wine'
+import { useCartStore } from '@/stores/cart.ts'
 
 const { t, locale } = useI18n()
 
@@ -193,6 +194,20 @@ function getPierreImage(range: string) {
       console.error(`Unknown wine range: ${range}`)
       return ''
   }
+}
+
+const addItemToCart = () => {
+  if (!wineData.value) return
+
+  const item = {
+    id,
+    name: wineData.value.name,
+    price: wineData.value.price,
+    quantity: 1
+  }
+
+  const cartStore = useCartStore()
+  cartStore.addItem(item)
 }
 </script>
 

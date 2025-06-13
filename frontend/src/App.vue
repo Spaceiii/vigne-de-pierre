@@ -3,12 +3,15 @@ import '@/assets/global.css'
 
 import { RouterView } from 'vue-router'
 import { useMessageStore } from '@/stores/message.ts'
+import { useCartStore } from '@/stores/cart.ts'
 import { useI18n } from 'vue-i18n'
 import NavBar from '@/components/Navbar/NavBar.vue'
 import Footer from '@/components/Footer/Footer.vue'
+import CartDrawer from '@/components/Cart/CartDrawer.vue'
 
 const { t } = useI18n()
 const messageStore = useMessageStore()
+const cartStore = useCartStore()
 
 function removeMessage(id: number) {
   const element = document.getElementById(`debug-${id}`)
@@ -47,6 +50,9 @@ function removeMessage(id: number) {
         </div>
       </template>
     </div>
+    <Transition>
+      <CartDrawer v-if="cartStore.isOpen" @close="cartStore.isOpen = false" />
+    </Transition>
 
     <div class="bottom-footer">
       <Footer />

@@ -2,10 +2,12 @@
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useCartStore } from '@/stores/cart.ts'
 
 const { t, locale } = useI18n()
 
 const route = useRoute()
+const cartStore = useCartStore()
 
 const needNav = computed(() => {
   return route.name !== 'home' && route.name !== 'not-found'
@@ -30,6 +32,8 @@ const toggleI18N = () => {
         </router-link>
       </div>
       <div class="right">
+        <button @click="cartStore.toggleCart">Cart</button>
+
         <select name="language" id="language" v-model="locale">
           <option value="fr" :selected="locale === 'fr'">Français</option>
           <option value="en" :selected="locale === 'en'">English</option>
@@ -65,6 +69,7 @@ h6 {
   position: sticky;
   top: 0;
   z-index: 999;
+  height: var(--navbar-height);
 }
 
 #navbar {
