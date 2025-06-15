@@ -289,12 +289,27 @@ router.get('/translation/:code', async (req, res) => {
       return
     }
 
-    const result: Record<string, any> = {}
+    interface WineData {
+      name: string;
+      description: string;
+      tasting: string;
+      conservation: string;
+      suggestion: string;
+      wineSlug: string;
+      nativeName: string;
+      price: number;
+    }
+
+    const result: Record<string, {
+      name: string;
+      description: string;
+      wines: WineData[];
+    }> = {}
 
     const rangeMap: Record<string, {
-      name: string,
-      description: string,
-      wines: any[]
+      name: string;
+      description: string;
+      wines: WineData[];
     }> = {}
 
     for (const wine of wines) {
@@ -318,9 +333,10 @@ router.get('/translation/:code', async (req, res) => {
 
     console.log(`✅ Found ${wines.length} wines with translations in language ${code}`)
     res.json(result)
-  } catch (e) {
-    res.status(500).json({ error: e.message })
-    console.error(`❌ Error getting wines with translations: ${e.message}`)
+  } catch (e: unknown) {
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    res.status(500).json({ error: errorMessage })
+    console.error(`❌ Error getting wines with translations: ${errorMessage}`)
   }
 })
 
@@ -383,9 +399,10 @@ router.post('/range/create', authRequired, adminOnly, async (req, res) => {
     createdRange = await db.insert(rangeTable).values(newRange)
     console.log(`🍷 Created new range: ${JSON.stringify(createdRange)}`)
     res.status(201).json(createdRange)
-  } catch (e) {
-    res.status(500).json({ error: e.message })
-    console.error(`❌ Error creating range: ${e.message}`)
+  } catch (e: unknown) {
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    res.status(500).json({ error: errorMessage })
+    console.error(`❌ Error creating range: ${errorMessage}`)
   }
 })
 
@@ -436,9 +453,10 @@ router.put('/range/update/:slug', authRequired, adminOnly, async (req, res) => {
     const updatedRange = await db.update(rangeTable).set({ name }).where(eq(rangeTable.slug, slug))
     console.log(`🍷 Updated range: ${JSON.stringify(updatedRange)}`)
     res.status(200).json(updatedRange)
-  } catch (e) {
-    res.status(500).json({ error: e.message })
-    console.error(`❌ Error updating range: ${e.message}`)
+  } catch (e: unknown) {
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    res.status(500).json({ error: errorMessage })
+    console.error(`❌ Error updating range: ${errorMessage}`)
   }
 })
 

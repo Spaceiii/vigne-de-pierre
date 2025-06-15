@@ -12,7 +12,16 @@ const options = {
         url: 'http://localhost:3000',
         description: 'Serveur de dev'
       }
-    ]
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT'
+        }
+      }
+    }
   },
   apis: ['./src/routes/*.ts'],
 }

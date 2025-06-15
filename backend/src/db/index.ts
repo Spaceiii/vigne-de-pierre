@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import { drizzle } from 'drizzle-orm/node-postgres'
 import { languageTable, rangeTable, rangeTranslationTable, wineTable, wineTranslationTable } from './schema.js'
-import { insertLanguage, insertRange, insertRangeTranslation, insertWine, insertWineTranslation } from './wine_insert.js'
+import { insertLanguage, insertRange, insertRangeTranslation, insertWine, insertWineTranslation } from './debug.js'
 
 const db = drizzle(process.env.DATABASE_URL!)
 

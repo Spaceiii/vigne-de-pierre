@@ -3,7 +3,7 @@
   --primary-bg-end: #3a4447;
   --footer-spacing: 6rem;
   --footer-height: 3rem;
-  --navbar-height: 130px;
+  --navbar-height: 8.2rem; /* Updated to match the new navbar size */
 }
 
 body {

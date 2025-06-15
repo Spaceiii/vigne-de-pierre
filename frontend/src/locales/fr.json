@@ -18,7 +18,9 @@
     "domain": "Le domaine",
     "wines": "Nos vins",
     "accommodation": "Hébergement",
-    "contact": "Contact"
+    "contact": "Contact",
+    "orders": "Mes Commandes",
+    "adminOrders": "Toutes les commandes"
   },
   "home": {
     "header": {
@@ -71,7 +73,9 @@
     }
   },
   "common": {
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "retry": "Réessayer",
+    "back": "Retour"
   },
   "wine": {
     "title": "Un vin d'exception",
@@ -291,5 +295,67 @@
   },
   "footer": {
     "prevention": "L'abus d'alcool est dangereux pour la santé. À consommer avec modération."
+  },
+  "cart": {
+    "title": "Panier de réservation",
+    "empty": "Votre panier est vide",
+    "remove": "Supprimer",
+    "estimated_total": "Total estimé",
+    "checkout": "Finaliser la réservation",
+    "quantity": "Quantité"
+  },
+  "checkout": {
+    "title": "Finaliser votre réservation",
+    "order_summary": "Récapitulatif de la commande",
+    "shipping_info": "Informations de contact",
+    "quantity": "Quantité",
+    "price": "Prix",
+    "total": "Total",
+    "address": "Informations de retrait en magasin",
+    "address_placeholder": "Entrez toute information supplémentaire pour le retrait",
+    "phone": "Numéro de téléphone",
+    "phone_placeholder": "Entrez votre numéro de téléphone",
+    "email": "Email",
+    "email_placeholder": "Entrez votre adresse email",
+    "place_order": "Passer la commande",
+    "processing": "Traitement en cours...",
+    "success": "Votre commande a été passée avec succès !",
+    "error": "Une erreur est survenue lors du traitement de votre commande. Veuillez réessayer.",
+    "empty_cart": "Votre panier est vide. Veuillez ajouter des articles avant de finaliser.",
+    "login_prompt": "Connectez-vous à votre compte pour finaliser votre réservation. Cela utilisera automatiquement votre email pour la réservation.",
+    "validation": {
+      "address_required": "Les informations de retrait sont requises",
+      "phone_required": "Le numéro de téléphone est requis",
+      "phone_invalid": "Veuillez entrer un numéro de téléphone valide",
+      "email_required": "L'adresse email est requise",
+      "email_invalid": "Veuillez entrer une adresse email valide"
+    }
+  },
+  "order": {
+    "history": "Historique de mes commandes",
+    "detail": "Détails de la commande",
+    "number": "Commande n°{id}",
+    "noOrders": "Vous n'avez pas encore passé de commande.",
+    "shopNow": "Acheter maintenant",
+    "fetchError": "Impossible de charger vos commandes. Veuillez réessayer.",
+    "fetchDetailError": "Impossible de charger les détails de la commande. Veuillez réessayer.",
+    "invalidId": "Identifiant de commande invalide",
+    "notFound": "Commande introuvable",
+    "backToHistory": "Retour à l'historique des commandes",
+    "viewDetails": "Voir les détails",
+    "totalItems": "{count} articles",
+    "contactInfo": "Informations de contact",
+    "pickupInfo": "Informations de retrait",
+    "email": "Email",
+    "phone": "Téléphone",
+    "items": "Articles commandés",
+    "total": "Total",
+    "status": {
+      "pending": "En attente",
+      "confirmed": "Confirmée",
+      "ready_for_pickup": "Prête pour le retrait",
+      "delivered": "Livrée",
+      "cancelled": "Annulée"
+    }
   }
 }

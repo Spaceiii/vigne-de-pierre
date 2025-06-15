@@ -18,7 +18,9 @@
     "domain": "The Estate",
     "wines": "Our Wines",
     "accommodation": "Accommodation",
-    "contact": "Contact"
+    "contact": "Contact",
+    "orders": "My Orders",
+    "adminOrders": "All Orders"
   },
   "home": {
     "header": {
@@ -71,7 +73,9 @@
     }
   },
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "retry": "Try Again",
+    "back": "Back"
   },
   "wine": {
     "title": "An Exceptional Wine",
@@ -291,5 +295,67 @@
   },
   "footer": {
     "prevention": "Excessive alcohol consumption is harmful to your health. Drink responsibly."
+  },
+  "cart": {
+    "title": "Reservation Cart",
+    "empty": "Your cart is empty",
+    "remove": "Remove",
+    "estimated_total": "Estimated total",
+    "checkout": "Complete reservation",
+    "quantity": "Quantity"
+  },
+  "checkout": {
+    "title": "Complete Your Reservation",
+    "order_summary": "Order Summary",
+    "shipping_info": "Contact Information",
+    "quantity": "Quantity",
+    "price": "Price",
+    "total": "Total",
+    "address": "Store Pickup Information",
+    "address_placeholder": "Enter any additional information for pickup",
+    "phone": "Phone Number",
+    "phone_placeholder": "Enter your phone number",
+    "email": "Email",
+    "email_placeholder": "Enter your email address",
+    "place_order": "Place Order",
+    "processing": "Processing...",
+    "success": "Your order has been placed successfully!",
+    "error": "There was an error processing your order. Please try again.",
+    "empty_cart": "Your cart is empty. Please add some items before checkout.",
+    "login_prompt": "Sign in to your account to complete your reservation. This will automatically use your email for the reservation.",
+    "validation": {
+      "address_required": "Pickup information is required",
+      "phone_required": "Phone number is required",
+      "phone_invalid": "Please enter a valid phone number",
+      "email_required": "Email address is required",
+      "email_invalid": "Please enter a valid email address"
+    }
+  },
+  "order": {
+    "history": "My Order History",
+    "detail": "Order Details",
+    "number": "Order #{id}",
+    "noOrders": "You haven't placed any orders yet.",
+    "shopNow": "Shop Now",
+    "fetchError": "Failed to load your orders. Please try again.",
+    "fetchDetailError": "Failed to load order details. Please try again.",
+    "invalidId": "Invalid order ID",
+    "notFound": "Order not found",
+    "backToHistory": "Back to Order History",
+    "viewDetails": "View Details",
+    "totalItems": "{count} items",
+    "contactInfo": "Contact Information",
+    "pickupInfo": "Pickup Information",
+    "email": "Email",
+    "phone": "Phone",
+    "items": "Order Items",
+    "total": "Total",
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "ready_for_pickup": "Ready for Pickup",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    }
   }
 }

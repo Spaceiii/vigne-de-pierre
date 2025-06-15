@@ -1,4 +1,24 @@
-import { boolean, integer, pgTable, text, varchar } from 'drizzle-orm/pg-core'
+import { boolean, integer, pgTable, text, varchar, timestamp } from 'drizzle-orm/pg-core'
+
+const orderTable = pgTable("order", {
+    id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+    userId: integer("user_id").notNull().references(() => userTable.id),
+    status: varchar("status", { length: 50 }).notNull().default('pending'),
+    totalPrice: integer("total_price").notNull(),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+    pickupInfo: text("pickup_info").notNull(),
+    contactPhone: varchar("contact_phone", { length: 20 }).notNull(),
+    contactEmail: varchar("contact_email", { length: 255 }).notNull(),
+})
+
+const orderItemTable = pgTable("order_item", {
+    id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+    orderId: integer("order_id").notNull().references(() => orderTable.id),
+    wineSlug: varchar("wine_slug", { length: 255 }).notNull().references(() => wineTable.slug),
+    quantity: integer("quantity").notNull(),
+    price: integer("price").notNull(),
+})
 
 const rangeTable = pgTable("range", {
     slug: varchar("slug", { length: 255 }).primaryKey(),
@@ -54,4 +74,6 @@ export {
     wineTranslationTable,
     rangeTranslationTable,
     userTable,
+    orderTable,
+    orderItemTable,
 };

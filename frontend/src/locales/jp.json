@@ -18,7 +18,9 @@
     "domain": "ドメーヌについて",
     "wines": "ワインのご紹介",
     "accommodation": "宿泊施設",
-    "contact": "お問い合わせ"
+    "contact": "お問い合わせ",
+    "orders": "注文履歴",
+    "adminOrders": "すべての注文"
   },
   "home": {
     "header": {
@@ -71,7 +73,9 @@
     }
   },
   "common": {
-    "loading": "読み込み中..."
+    "loading": "読み込み中...",
+    "retry": "再試行",
+    "back": "戻る"
   },
   "wine": {
     "title": "卓越したワイン",
@@ -153,5 +157,67 @@
   },
   "footer": {
     "prevention": "お酒は健康を損なう恐れがあります。適量を心がけましょう。"
+  },
+  "cart": {
+    "title": "予約カート",
+    "empty": "カートは空です",
+    "remove": "削除",
+    "estimated_total": "概算合計",
+    "checkout": "予約を完了する",
+    "quantity": "数量"
+  },
+  "checkout": {
+    "title": "予約を完了する",
+    "order_summary": "注文概要",
+    "shipping_info": "連絡先情報",
+    "quantity": "数量",
+    "price": "価格",
+    "total": "合計",
+    "address": "店舗受け取り情報",
+    "address_placeholder": "受け取りに関する追加情報を入力してください",
+    "phone": "電話番号",
+    "phone_placeholder": "電話番号を入力してください",
+    "email": "メールアドレス",
+    "email_placeholder": "メールアドレスを入力してください",
+    "place_order": "注文を確定する",
+    "processing": "処理中...",
+    "success": "ご注文が正常に完了しました！",
+    "error": "注文処理中にエラーが発生しました。もう一度お試しください。",
+    "empty_cart": "カートが空です。チェックアウト前に商品を追加してください。",
+    "login_prompt": "予約を完了するにはアカウントにログインしてください。ログインすると、メールアドレスが自動的に予約に使用されます。",
+    "validation": {
+      "address_required": "受け取り情報は必須です",
+      "phone_required": "電話番号は必須です",
+      "phone_invalid": "有効な電話番号を入力してください",
+      "email_required": "メールアドレスは必須です",
+      "email_invalid": "有効なメールアドレスを入力してください"
+    }
+  },
+  "order": {
+    "history": "注文履歴",
+    "detail": "注文詳細",
+    "number": "注文番号：{id}",
+    "noOrders": "まだ注文はありません。",
+    "shopNow": "今すぐショッピング",
+    "fetchError": "注文の読み込みに失敗しました。もう一度お試しください。",
+    "fetchDetailError": "注文詳細の読み込みに失敗しました。もう一度お試しください。",
+    "invalidId": "無効な注文IDです",
+    "notFound": "注文が見つかりません",
+    "backToHistory": "注文履歴に戻る",
+    "viewDetails": "詳細を見る",
+    "totalItems": "{count}点のアイテム",
+    "contactInfo": "連絡先情報",
+    "pickupInfo": "受け取り情報",
+    "email": "メールアドレス",
+    "phone": "電話番号",
+    "items": "注文アイテム",
+    "total": "合計",
+    "status": {
+      "pending": "処理中",
+      "confirmed": "確認済み",
+      "ready_for_pickup": "受け取り準備完了",
+      "delivered": "配送済み",
+      "cancelled": "キャンセル済み"
+    }
   }
 }
