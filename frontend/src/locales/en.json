@@ -275,6 +275,7 @@
   "auth": {
     "login": "Login",
     "register": "Sign Up",
+    "logout": "Logout",
 
     "welcomeBack": "Welcome back",
     "joinUs": "Join us",

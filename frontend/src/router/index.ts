@@ -67,6 +67,12 @@ const router = createRouter({
       meta: { requiresAuth: true, adminOnly: true },
     },
     {
+      path: '/admin/wines',
+      name: 'admin-wines',
+      component: () => import('@/views/Admin/WineAdmin.vue'),
+      meta: { requiresAuth: true, adminOnly: true },
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('@/views/NotFoundView.vue'),

@@ -137,6 +137,7 @@
   "auth": {
     "login": "ログイン",
     "register": "登録",
+    "logout": "ログアウト",
 
     "welcomeBack": "おかえりなさい",
     "joinUs": "参加する",

@@ -2,7 +2,7 @@
 import 'dotenv/config'
 import { drizzle } from 'drizzle-orm/node-postgres'
 import { languageTable, rangeTable, rangeTranslationTable, wineTable, wineTranslationTable } from '../db/schema.js'
-import { eq, and } from 'drizzle-orm'
+import { eq, and, inArray } from 'drizzle-orm'
 import express from 'express'
 import { authRequired } from '../middleware/authRequired.js'
 import { adminOnly } from '../middleware/adminOnly.js'
@@ -733,9 +733,9 @@ router.delete('/delete/:slug', authRequired, adminOnly, async (req, res) => {
  */
 router.post('/translation/create', authRequired, adminOnly, async (req, res) => {
   const {
-    name,
     slug,
     languageId,
+    name,
     description,
     tasting,
     conservation,
@@ -893,6 +893,154 @@ router.delete('/translation/delete/:id', authRequired, adminOnly, async (req, re
   }
 })
 
+/**
+ * @swagger
+ * /api/wine/range/translation/create:
+ *   post:
+ *     tags:
+ *       - RangeTranslation
+ *     summary: Crée une traduction pour une gamme
+ *     consumes:
+ *       - application/json
+ *     parameters:
+ *       - in: body
+ *         name: rangeTranslation
+ *         required: true
+ *         schema:
+ *           type: object
+ *           required:
+ *             - rangeSlug
+ *             - languageId
+ *             - name
+ *             - description
+ *           properties:
+ *             rangeSlug:
+ *               type: string
+ *               example: rouge
+ *             languageId:
+ *               type: integer
+ *               example: 1
+ *             name:
+ *               type: string
+ *               example: Red Wines
+ *             description:
+ *               type: string
+ *               example: Selection of bold and rich red wines.
+ *     responses:
+ *       201:
+ *         description: Traduction créée
+ *       400:
+ *         description: Données invalides
+ */
+router.post('/range/translation/create', async (req, res) => {
+  const { rangeSlug, languageId, name, description } = req.body
+
+  if (!rangeSlug || !languageId || !name || !description) {
+    res.status(400).json({ error: 'Missing required fields' })
+    return
+  }
+
+  try {
+    await db.insert(rangeTranslationTable).values({
+      rangeSlug,
+      languageId,
+      name,
+      description,
+    })
+    res.status(201).json({ message: 'Translation created' })
+  } catch (error) {
+    console.error('Create error:', error)
+    res.status(500).json({ error: 'Failed to create range translation' })
+  }
+})
+
+/**
+ * @swagger
+ * /api/wine/range/translation/update/{id}:
+ *   put:
+ *     tags:
+ *       - RangeTranslation
+ *     summary: Met à jour une traduction de gamme
+ *     consumes:
+ *       - application/json
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         type: integer
+ *       - in: body
+ *         name: rangeTranslation
+ *         required: true
+ *         schema:
+ *           type: object
+ *           properties:
+ *             name:
+ *               type: string
+ *               example: Updated name
+ *             description:
+ *               type: string
+ *               example: Updated description
+ *     responses:
+ *       200:
+ *         description: Traduction mise à jour
+ *       404:
+ *         description: Introuvable
+ */
+router.put('/range/translation/update/:id', async (req, res) => {
+  const { id } = req.params
+  const { name, description } = req.body
+
+  if (!name && !description) {
+    res.status(400).json({ error: 'No fields to update' })
+    return
+  }
+
+  try {
+    await db
+      .update(rangeTranslationTable)
+      .set({ name, description })
+      .where(eq(rangeTranslationTable.id, Number(id)))
+
+    res.json({ message: 'Translation updated' })
+  } catch (error) {
+    console.error('Update error:', error)
+    res.status(500).json({ error: 'Failed to update range translation' })
+  }
+})
+
+/**
+ * @swagger
+ * /api/wine/range/translation/delete/{id}:
+ *   delete:
+ *     tags:
+ *       - RangeTranslation
+ *     summary: Supprime une traduction de gamme
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         type: integer
+ *     responses:
+ *       200:
+ *         description: Traduction supprimée
+ *       404:
+ *         description: Introuvable
+ */
+router.delete('/range/translation/delete/:id', async (req, res) => {
+  const { id } = req.params
+
+  try {
+    await db
+      .delete(rangeTranslationTable)
+      .where(eq(rangeTranslationTable.id, Number(id)))
+
+    res.json({ message: 'Translation deleted' })
+  } catch (error) {
+    console.error('Delete error:', error)
+    res.status(500).json({ error: 'Failed to delete range translation' })
+  }
+})
+
 
 /**
  * @swagger
@@ -962,5 +1110,94 @@ router.put('/language/update/:id', authRequired, adminOnly, async (req, res) => 
     console.error(`❌ Error updating language: ${e.message}`)
   }
 })
+
+router.post('/wine/translation-list/:code', async (req, res) => {
+  const { code } = req.params;
+  const { slugs } = req.body;
+
+  if (!Array.isArray(slugs) || slugs.length === 0) {
+    res.status(400).json({ error: 'Missing or invalid "slugs" in request body' });
+    return
+  }
+
+  try {
+    const language = await db
+      .select()
+      .from(languageTable)
+      .where(eq(languageTable.code, code))
+      .then(rows => rows[0]);
+
+    if (!language) {
+      res.status(404).json({ error: `Language with code "${code}" not found` });
+      return
+    }
+
+    const wines = await db
+      .select({
+        slug: wineTable.slug,
+        nativeName: wineTable.nativeName,
+        price: wineTable.price,
+        rangeSlug: wineTable.rangeSlug,
+        name: wineTranslationTable.name,
+        description: wineTranslationTable.description,
+        tasting: wineTranslationTable.tasting,
+        conservation: wineTranslationTable.conservation,
+        suggestion: wineTranslationTable.suggestion,
+      })
+      .from(wineTable)
+      .leftJoin(wineTranslationTable, and(
+        eq(wineTable.slug, wineTranslationTable.wineSlug),
+        eq(wineTranslationTable.languageId, language.id)
+      ))
+      .where(inArray(wineTable.slug, slugs));
+
+    const rangeSlugs = [...new Set(wines.map(w => w.rangeSlug))];
+
+    const ranges = await db
+      .select({
+        slug: rangeTable.slug,
+        name: rangeTranslationTable.name,
+        description: rangeTranslationTable.description,
+        defaultName: rangeTable.name,
+        defaultDescription: rangeTable.description,
+      })
+      .from(rangeTable)
+      .leftJoin(rangeTranslationTable, and(
+        eq(rangeTable.slug, rangeTranslationTable.rangeSlug),
+        eq(rangeTranslationTable.languageId, language.id)
+      ))
+      .where(inArray(rangeTable.slug, rangeSlugs));
+
+    const rangeMap = Object.fromEntries(
+      ranges.map(r => [
+        r.slug,
+        {
+          name: r.name ?? r.defaultName,
+          description: r.description ?? r.defaultDescription,
+        }
+      ])
+    );
+
+    const winesClean = wines.map(w => ({
+      slug: w.slug,
+      nativeName: w.nativeName,
+      price: w.price,
+      name: w.name,
+      description: w.description,
+      tasting: w.tasting,
+      conservation: w.conservation,
+      suggestion: w.suggestion,
+      rangeSlug: w.rangeSlug,
+    }));
+
+    return res.status(200).json({
+      vin: winesClean,
+      range: rangeMap,
+    });
+  } catch (err) {
+    console.error('Error fetching wine translations:', err);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 export default router

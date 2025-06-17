@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
@@ -6,6 +7,7 @@ import { useCartStore } from '@/stores/cart.ts'
 import { useAuthStore } from '@/stores/auth.ts'
 
 const { t, locale } = useI18n()
+const router = useRouter()
 
 const route = useRoute()
 const cartStore = useCartStore()
@@ -15,12 +17,9 @@ const needNav = computed(() => {
   return route.name !== 'home' && route.name !== 'not-found'
 })
 
-const toggleI18N = () => {
-  const currentLocale = locale.value
-  const newLocale = currentLocale === 'fr' ? 'en' : 'fr'
-  locale.value = newLocale
-  document.documentElement.setAttribute('lang', newLocale)
-  localStorage.setItem('locale', newLocale)
+function logout() {
+  authStore.logout()
+  router.push('/')
 }
 </script>
 
@@ -51,9 +50,28 @@ const toggleI18N = () => {
           <span class="nav-icon">👤</span>
           <span class="nav-text">{{ t('auth.login') }}</span>
         </router-link>
-        <button @click="cartStore.toggleCart" class="nav-button cart-button">
+        <button v-if="!authStore.user?.isAdmin" @click="cartStore.toggleCart"
+                class="nav-button cart-button">
           <span class="nav-icon">🛒</span>
           <span class="nav-text">{{ t('cart.title') }}</span>
+        </button>
+
+        <button
+          v-if="authStore.user"
+          @click="logout"
+          class="nav-button logout-button"
+        >
+          <span class="nav-icon">🚪</span>
+          <span class="nav-text">{{ t('auth.logout') }}</span>
+        </button>
+
+        <button
+          v-if="authStore.user?.isAdmin"
+          @click="router.push('/admin/wines')"
+          class="nav-button admin-button"
+        >
+          <span class="nav-icon">👨‍🍇</span>
+          <span class="nav-text">{{ t('nav.wine_edit') }}</span>
         </button>
 
         <div class="language-selector">
