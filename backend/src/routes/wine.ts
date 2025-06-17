@@ -917,31 +917,42 @@ router.put('/translation/update/:code/:slug', authRequired, adminOnly, async (re
 
 /**
  * @swagger
- * /api/wine/translation/delete/{id}:
+ * /api/wine/translation/delete/{code}/{slug}:
  *   delete:
  *     tags:
  *       - Vins
  *     summary: Supprime une traduction de vin
  *     description: Supprime une traduction de vin avec l'ID fourni
  *     parameters:
- *       - name: id
+ *       - name: code
  *         in: path
  *         required: true
- *         description: ID de la traduction à supprimer
+ *         description: Code de la langue
  *         schema:
- *           type: integer
+ *           type: string
+ *       - name: slug
+ *         in: path
+ *         required: true
+ *         description: Slug du vin à supprimer
+ *         schema:
+ *           type: string
  *     responses:
  *       200:
  *         description: Traduction supprimée avec succès
  *       500:
  *         description: Erreur interne du serveur
  */
-router.delete('/translation/delete/:id', authRequired, adminOnly, async (req, res) => {
-  const { id } = req.params
+router.delete('/translation/delete/:code/:slug', authRequired, adminOnly, async (req, res) => {
+  const { code, slug } = req.params
 
   try {
+    const [language] = await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, code))
+
     const deletedTranslation = await db.delete(wineTranslationTable)
-      .where(eq(wineTranslationTable.id, parseInt(id)))
+      .where(and(
+        eq(wineTranslationTable.wineSlug, slug),
+        eq(wineTranslationTable.languageId, language.id)
+      ))
     console.log(`🍷 Deleted translation: ${JSON.stringify(deletedTranslation)}`)
     res.status(200).json(deletedTranslation)
   } catch (e) {
@@ -1067,16 +1078,22 @@ router.put('/range/translation/update/:id', async (req, res) => {
 
 /**
  * @swagger
- * /api/wine/range/translation/delete/{id}:
+ * /api/wine/range/translation/delete/{code}/{slug}:
  *   delete:
  *     tags:
  *       - RangeTranslation
  *     summary: Supprime une traduction de gamme
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: code
  *         required: true
- *         type: integer
+ *         type: string
+ *         description: Code de la langue
+ *       - in: path
+ *         name: slug
+ *         required: true
+ *         type: string
+ *         description: Slug de la gamme
  *     responses:
  *       200:
  *         description: Traduction supprimée
