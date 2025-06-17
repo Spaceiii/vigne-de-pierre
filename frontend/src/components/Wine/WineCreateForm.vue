@@ -104,7 +104,7 @@ async function handleSubmit() {
     for (const lang of languages) {
       await createWineTranslation({
         wineSlug: wine.slug,
-        languageId: lang.languageId,
+        languageCode: lang.code,
         ...translations[lang.code]
       })
     }

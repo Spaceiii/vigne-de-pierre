@@ -49,7 +49,7 @@ export async function deleteWine(slug: string) {
 
 export async function createWineTranslation(data: {
   wineSlug: string
-  languageId: number
+  languageCode: string
   name: string
   description: string
   tasting: string

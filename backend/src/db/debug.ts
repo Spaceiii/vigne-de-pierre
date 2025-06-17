@@ -27,15 +27,31 @@ async function test() {
 
 async function test2() {
   const wines = await db.select().from(wineTable).where(
-    eq(wineTable.slug, 'test')
+    eq(wineTable.slug, 'test3')
   )
 
   const translations = await db.select().from(wineTranslationTable).where(
-    eq(wineTranslationTable.wineSlug, 'test')
+    eq(wineTranslationTable.wineSlug, 'test3')
   )
 
   console.log('Wines:', wines)
   console.log('Translations:', translations)
 }
 
-test2()
+async function test3() {
+  await db.delete(wineTranslationTable).where(
+    eq(wineTranslationTable.wineSlug, 'test3')
+  )
+
+  await db.delete(wineTable).where(
+    eq(wineTable.slug, 'test3')
+  )
+
+  const [test] = await db.select().from(wineTable).where(
+    eq(wineTable.slug, 'test3')
+  ).limit(1)
+
+  console.log('test3:', test)
+}
+
+test3()

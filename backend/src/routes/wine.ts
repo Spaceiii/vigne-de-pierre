@@ -6,6 +6,7 @@ import { eq, and, inArray } from 'drizzle-orm'
 import express from 'express'
 import { authRequired } from '../middleware/authRequired.js'
 import { adminOnly } from '../middleware/adminOnly.js'
+import { translation } from '../../drizzle/schema.js'
 
 
 const router = express.Router()
@@ -579,11 +580,6 @@ router.post('/create', authRequired, adminOnly, async (req, res) => {
     rangeSlug
   }
 
-  console.log(newWine)
-
-  // log missing fields
-  console.log(`Checking required fields: name=${name}, slug=${slug}, nativeName=${nativeName}, price=${price}, rangeSlug=${rangeSlug}`)
-
   console.log(!name || !slug || !nativeName || price || !rangeSlug)
 
   if (!name || !slug || !nativeName || !price || !rangeSlug) {
@@ -730,14 +726,14 @@ router.delete('/delete/:slug', authRequired, adminOnly, async (req, res) => {
  *                 type: string
  *                 description: Nom du vin
  *                 example: "Chardonnay"
- *               slug:
+ *               wineSlug:
  *                 type: string
  *                 description: Slug du vin
  *                 example: "chardonnay"
- *               languageId:
- *                 type: integer
- *                 description: ID de la langue
- *                 example: 1
+ *               languageCode:
+ *                 type: string
+ *                 description: Code de la langue (ex. fr, en, jp)
+ *                 example: fr
  *               description:
  *                 type: string
  *                 description: Description du vin
@@ -764,8 +760,8 @@ router.delete('/delete/:slug', authRequired, adminOnly, async (req, res) => {
  */
 router.post('/translation/create', authRequired, adminOnly, async (req, res) => {
   const {
-    slug,
-    languageId,
+    wineSlug,
+    languageCode,
     name,
     description,
     tasting,
@@ -773,24 +769,43 @@ router.post('/translation/create', authRequired, adminOnly, async (req, res) => 
     suggestion
   } = req.body
 
-  const newTranslation = {
+  const newTranslation: {
+    name: string
+    wineSlug: string
+    description: string
+    tasting: string
+    conservation: string
+    suggestion: string
+    languageId: number
+  } = {
     name,
-    wineSlug: slug,
-    languageId,
+    wineSlug,
     description,
     tasting,
     conservation,
-    suggestion
+    suggestion,
+    languageId: 0 // Will be set after fetching the language ID
   }
 
-  if (!name || !slug || !languageId || !description || !tasting || !conservation || !suggestion) {
+  // log all the fields
+  console.log(`Creating translation with data:`, newTranslation)
+  console.log(`Wine Slug: ${wineSlug}, Language Code: ${languageCode}, Name: ${name}, Description: ${description}, Tasting: ${tasting}, Conservation: ${conservation}, Suggestion: ${suggestion}`)
+
+  if (!languageCode || !newTranslation.name || !newTranslation.wineSlug || !newTranslation.description || !newTranslation.tasting || !newTranslation.conservation || !newTranslation.suggestion) {
     res.status(400).json({ message: 'Missing required fields' })
     return
   }
   let createdTranslation
   try {
+    const [language] = await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, languageCode))
+    newTranslation.languageId = language.id
+    if (!language) {
+      res.status(400).json({ message: 'Invalid language code' })
+      return
+    }
+    
     createdTranslation = await db.insert(wineTranslationTable).values(newTranslation)
-    console.log(`🍷 Created new translation: ${JSON.stringify(createdTranslation)}`)
+    console.log(`🍷 Created new translation`)
     res.status(201).json(createdTranslation)
   } catch (e) {
     res.status(500).json({ error: e.message })
