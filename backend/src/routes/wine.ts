@@ -31,6 +31,30 @@ router.get('/all_wines/', async (req, res) => {
 
 /**
  * @swagger
+ * /api/wine/all_ranges:
+ *   get:
+ *     tags:
+ *       - Vins
+ *     summary: Récupère toutes les gammes de vins
+ *     responses:
+ *       200:
+ *         description: Liste de toutes les gammes de vins
+ */
+router.get('/all_ranges', async (req, res) => {
+  const ranges = await db.select().from(rangeTable)
+  console.log(`🔎 Selecting all ranges`)
+  if (ranges.length === 0) {
+    res.status(404).json({ message: 'No ranges found' })
+    console.error(`❌ No ranges found`)
+    return
+  }
+  console.log(`✅ Found ${ranges.length} ranges`)
+  res.json(ranges)
+})
+
+
+/**
+ * @swagger
  * /api/wine/details/{slug}:
  *   get:
  *     tags:
@@ -554,6 +578,13 @@ router.post('/create', authRequired, adminOnly, async (req, res) => {
     price,
     rangeSlug
   }
+
+  console.log(newWine)
+
+  // log missing fields
+  console.log(`Checking required fields: name=${name}, slug=${slug}, nativeName=${nativeName}, price=${price}, rangeSlug=${rangeSlug}`)
+
+  console.log(!name || !slug || !nativeName || price || !rangeSlug)
 
   if (!name || !slug || !nativeName || !price || !rangeSlug) {
     res.status(400).json({ message: 'Missing required fields' })

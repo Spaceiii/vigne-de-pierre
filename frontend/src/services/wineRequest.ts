@@ -33,8 +33,9 @@ async function getWine(slug: string): Promise<Wine> {
 }
 
 
-async function postWine(wine: Wine): Promise<Wine> {
+async function postWine(wine: Wine & { rangeSlug: string, price: number, nativeName: string }): Promise<Wine> {
   const { data, error} = await postRequest('/wine/create', wine)
+  console.log(`Creating wine with data:`, wine)
   if (error) {
     throw new Error('Error creating wine')
   }

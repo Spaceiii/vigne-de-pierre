@@ -25,4 +25,17 @@ async function test() {
   console.log(test)
 }
 
-test()
+async function test2() {
+  const wines = await db.select().from(wineTable).where(
+    eq(wineTable.slug, 'test')
+  )
+
+  const translations = await db.select().from(wineTranslationTable).where(
+    eq(wineTranslationTable.wineSlug, 'test')
+  )
+
+  console.log('Wines:', wines)
+  console.log('Translations:', translations)
+}
+
+test2()
