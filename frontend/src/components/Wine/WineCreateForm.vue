@@ -71,6 +71,8 @@ const wine = reactive({
   price: 0
 })
 
+const emit = defineEmits(['wine-created'])
+
 const ranges = ref<{ slug: string; name: string }[]>([])
 const loading = ref(false)
 
@@ -110,6 +112,8 @@ async function handleSubmit() {
     }
 
     alert('✅ Vin créé avec succès !')
+
+    emit('wine-created')
   } catch (err: any) {
     alert(`❌ Erreur lors de la création : ${err.message || err}`)
   } finally {

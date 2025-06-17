@@ -54,7 +54,7 @@
 
 <script setup lang="ts">
 import { reactive, ref, onMounted } from 'vue'
-import { updateWineTranslation, deleteWineTranslation } from '@/services/wineService'
+import { updateWineTranslation, deleteWine } from '@/services/wineService'
 import { getWinesByLanguage } from '@/services/wineRequest.ts'
 import type { WinesByRange, WineTranslation } from '@/types/wine'
 import WineCreateForm from '@/components/Wine/WineCreateForm.vue'
@@ -116,7 +116,7 @@ async function deleteTranslation(wineSlug: string) {
 
   saving[wineSlug] = true
   try {
-    await deleteWineTranslation(languageCode.value, wineSlug)
+    await deleteWine(wineSlug)
     alert(`Traduction du vin ${wineSlug} supprimée.`)
     delete translations[wineSlug]
 

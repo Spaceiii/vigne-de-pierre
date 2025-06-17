@@ -378,6 +378,14 @@
     "deleted_successfully": "Wine translation {wine} deleted successfully.",
     "error_saving": "Error saving wine translation",
     "error_deleting": "Error deleting wine translation",
-    "confirm_delete": "Are you sure you want to delete the translation for {wine}?"
+    "confirm_delete": "Are you sure you want to delete the translation for {wine}?",
+    "create_new_wine": "Create a new wine",
+    "slug": "Slug",
+    "range": "Range",
+    "select_range": "Select a range",
+    "price": "Price",
+    "translation": "Translation",
+    "show_create_form": "Show creation form",
+    "hide_create_form": "Hide creation form"
   }
 }

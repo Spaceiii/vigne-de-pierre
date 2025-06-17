@@ -6,7 +6,6 @@ import { eq, and, inArray } from 'drizzle-orm'
 import express from 'express'
 import { authRequired } from '../middleware/authRequired.js'
 import { adminOnly } from '../middleware/adminOnly.js'
-import { translation } from '../../drizzle/schema.js'
 
 
 const router = express.Router()
@@ -697,6 +696,7 @@ router.delete('/delete/:slug', authRequired, adminOnly, async (req, res) => {
   const { slug } = req.params
 
   try {
+    await db.delete(wineTranslationTable).where(eq(wineTranslationTable.wineSlug, slug))
     const deletedWine = await db.delete(wineTable).where(eq(wineTable.slug, slug))
     console.log(`🍷 Deleted wine: ${JSON.stringify(deletedWine)}`)
     res.status(200).json(deletedWine)

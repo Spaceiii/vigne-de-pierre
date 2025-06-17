@@ -240,6 +240,14 @@
     "deleted_successfully": "ワイン {wine} の翻訳が削除されました。",
     "error_saving": "翻訳の保存中にエラーが発生しました",
     "error_deleting": "翻訳の削除中にエラーが発生しました",
-    "confirm_delete": "本当にこのワインの翻訳を削除しますか？"
+    "confirm_delete": "本当にこのワインの翻訳を削除しますか？",
+    "create_new_wine": "新しいワインを作成",
+    "slug": "スラッグ",
+    "range": "レンジ",
+    "select_range": "レンジを選択",
+    "price": "価格",
+    "translation": "翻訳",
+    "show_create_form": "作成フォームを表示",
+    "hide_create_form": "作成フォームを非表示"
   }
 }

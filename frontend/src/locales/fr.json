@@ -378,6 +378,14 @@
     "deleted_successfully": "Traduction du vin {wine} supprimée.",
     "error_saving": "Erreur lors de la sauvegarde",
     "error_deleting": "Erreur lors de la suppression",
-    "confirm_delete": "Confirmez-vous la suppression de la traduction du vin {wine} ?"
+    "confirm_delete": "Confirmez-vous la suppression de la traduction du vin {wine} ?",
+    "create_new_wine": "Créer un nouveau vin",
+    "slug": "Identifiant (slug)",
+    "range": "Gamme",
+    "select_range": "Sélectionnez une gamme",
+    "price": "Prix",
+    "translation": "Traduction",
+    "show_create_form": "Afficher le formulaire de création",
+    "hide_create_form": "Masquer le formulaire de création"
   }
 }
