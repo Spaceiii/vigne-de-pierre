@@ -20,7 +20,8 @@
     "accommodation": "Accommodation",
     "contact": "Contact",
     "orders": "My Orders",
-    "adminOrders": "All Orders"
+    "adminOrders": "All Orders",
+    "wine_edit": "Edit Wines"
   },
   "home": {
     "header": {
@@ -276,7 +277,7 @@
     "login": "Login",
     "register": "Sign Up",
     "logout": "Logout",
-
+    "wine_edit": "Édition des vins",
     "welcomeBack": "Welcome back",
     "joinUs": "Join us",
 
@@ -358,5 +359,25 @@
       "delivered": "Delivered",
       "cancelled": "Cancelled"
     }
+  },
+  "wine_admin": {
+    "title": "Wine Management",
+    "language": "Language",
+    "lang_fr": "Français",
+    "lang_en": "English",
+    "lang_ja": "日本語",
+    "loading": "Loading...",
+    "name": "Name",
+    "description": "Description",
+    "tasting": "Tasting",
+    "conservation": "Cellaring",
+    "suggestion": "Suggestion",
+    "save": "Save",
+    "delete": "Delete",
+    "saved_successfully": "Wine translation {wine} saved successfully.",
+    "deleted_successfully": "Wine translation {wine} deleted successfully.",
+    "error_saving": "Error saving wine translation",
+    "error_deleting": "Error deleting wine translation",
+    "confirm_delete": "Are you sure you want to delete the translation for {wine}?"
   }
 }

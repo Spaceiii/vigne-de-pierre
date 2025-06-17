@@ -770,19 +770,25 @@ router.post('/translation/create', authRequired, adminOnly, async (req, res) => 
 
 /**
  * @swagger
- * /api/wine/translation/update/{id}:
+ * /api/wine/translation/update/{code}/{slug}:
  *   put:
  *     tags:
  *       - Vins
  *     summary: Met à jour une traduction de vin
  *     description: Met à jour une traduction de vin avec les informations fournies
  *     parameters:
- *       - name: id
+ *       - name: code
  *         in: path
  *         required: true
- *         description: ID de la traduction à mettre à jour
+ *         description: code de la langue
  *         schema:
- *           type: integer
+ *           type: string
+ *       - name: slug
+ *         in: path
+ *         required: true
+ *         description: Slug du vin à mettre à jour
+ *         schema:
+ *            type: string
  *     requestBody:
  *       required: true
  *       content:
@@ -818,8 +824,8 @@ router.post('/translation/create', authRequired, adminOnly, async (req, res) => 
  *       500:
  *         description: Erreur interne du serveur
  */
-router.put('/translation/update/:id', authRequired, adminOnly, async (req, res) => {
-  const { id } = req.params
+router.put('/translation/update/:code/:slug', authRequired, adminOnly, async (req, res) => {
+  const { code, slug } = req.params
   const { name, description, tasting, conservation, suggestion } = req.body
 
   if (!name && !description && !tasting && !conservation && !suggestion) {
@@ -847,9 +853,14 @@ router.put('/translation/update/:id', authRequired, adminOnly, async (req, res) 
   if (suggestion) updateData.suggestion = suggestion
 
   try {
+    const [language] = await db.select({ id: languageTable.id }).from(languageTable).where(eq(languageTable.code, code))
+
     const updatedTranslation = await db.update(wineTranslationTable)
       .set(updateData)
-      .where(eq(wineTranslationTable.id, parseInt(id)))
+      .where(and(
+        eq(wineTranslationTable.wineSlug, slug),
+        eq(wineTranslationTable.languageId, language.id)
+      ))
     console.log(`🍷 Updated translation: ${JSON.stringify(updatedTranslation)}`)
     res.status(200).json(updatedTranslation)
   } catch (e) {
@@ -1190,13 +1201,15 @@ router.post('/wine/translation-list/:code', async (req, res) => {
       rangeSlug: w.rangeSlug,
     }));
 
-    return res.status(200).json({
+    res.status(200).json({
       vin: winesClean,
       range: rangeMap,
     });
+    return
   } catch (err) {
     console.error('Error fetching wine translations:', err);
-    return res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Internal server error' });
+    return
   }
 });
 

@@ -59,18 +59,18 @@ export async function createWineTranslation(data: {
   return await postRequest('/wine/translation/create', data)
 }
 
-export async function updateWineTranslation(id: number, data: {
+export async function updateWineTranslation(languageCode: string, wineSlug: string, data: {
   name?: string
   description?: string
   tasting?: string
   conservation?: string
   suggestion?: string
 }) {
-  return await putRequest(`/wine/translation/update/${id}`, data)
+  return await putRequest(`/wine/translation/update/${languageCode}/${wineSlug}`, data)
 }
 
-export async function deleteWineTranslation(id: number) {
-  return await deleteRequest(`/wine/translation/delete/${id}`)
+export async function deleteWineTranslation(languageCode: string, wineSlug: string) {
+  return await deleteRequest(`/wine/translation/delete/${languageCode}/${wineSlug}`)
 }
 
 /* ------------------ 🌐 RANGE TRANSLATION ------------------ */

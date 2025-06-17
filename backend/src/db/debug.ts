@@ -1,7 +1,8 @@
 import 'dotenv/config'
 
 import {drizzle } from 'drizzle-orm/node-postgres'
-import { userTable } from './schema.js'
+import { userTable, wineTable, wineTranslationTable } from './schema.js'
+import { eq } from 'drizzle-orm'
 
 const db = drizzle(process.env.DATABASE_URL!)
 
@@ -18,4 +19,10 @@ async function main() {
   console.log('Admin user created:', admin)
 }
 
-main()
+async function test() {
+  const [test] = await db.select({tasting: wineTranslationTable.tasting}).from(wineTranslationTable).where(eq(wineTranslationTable.wineSlug, 'riesling_emeraude')).limit(1)
+
+  console.log(test)
+}
+
+test()

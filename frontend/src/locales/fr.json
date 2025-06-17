@@ -20,7 +20,8 @@
     "accommodation": "Hébergement",
     "contact": "Contact",
     "orders": "Mes Commandes",
-    "adminOrders": "Toutes les commandes"
+    "adminOrders": "Toutes les commandes",
+    "wine_edit": "Édition des vins"
   },
   "home": {
     "header": {
@@ -358,5 +359,25 @@
       "delivered": "Livrée",
       "cancelled": "Annulée"
     }
+  },
+  "wine_admin": {
+    "title": "Administration des vins",
+    "language": "Langue",
+    "lang_fr": "Français",
+    "lang_en": "English",
+    "lang_ja": "日本語",
+    "loading": "Chargement...",
+    "name": "Nom",
+    "description": "Description",
+    "tasting": "Dégustation",
+    "conservation": "Conservation",
+    "suggestion": "Suggestion",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "saved_successfully": "Traduction du vin {wine} enregistrée.",
+    "deleted_successfully": "Traduction du vin {wine} supprimée.",
+    "error_saving": "Erreur lors de la sauvegarde",
+    "error_deleting": "Erreur lors de la suppression",
+    "confirm_delete": "Confirmez-vous la suppression de la traduction du vin {wine} ?"
   }
 }

@@ -70,7 +70,7 @@ function logout() {
           @click="router.push('/admin/wines')"
           class="nav-button admin-button"
         >
-          <span class="nav-icon">👨‍🍇</span>
+          <span class="nav-icon">🍇</span>
           <span class="nav-text">{{ t('nav.wine_edit') }}</span>
         </button>
 
