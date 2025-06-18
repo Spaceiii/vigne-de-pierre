@@ -10,6 +10,16 @@
         <span class="btn-icon">{{ showCreateForm ? '−' : '+' }}</span>
         {{ showCreateForm ? $t('wine_admin.hide_create_form') : $t('wine_admin.show_create_form') }}
       </button>
+
+      <select
+        v-model="languageCode"
+        class="btn btn-secondary"
+        @change="reloadWines"
+      >
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+        <option value="jp">Japonais</option>
+      </select>
     </div>
 
     <div v-if="showCreateForm" class="create-form-container">
