@@ -73,6 +73,9 @@
       "content_0": "Notre caveau de dégustation est un lieu convivial qui vient vous présenter l’aboutissement d’un travail. C’est à travers ces verres de vin que l’on peut apprécier la vigilance du vigneron, le sourire du vendangeur, l’effort du pressureur et la passion du caviste.<br><br><strong>Horaires d’ouvertures</strong> : du lundi au samedi de 8 h à 12 h et de 13 h 30 à 19 h.<br>Jour de fermeture : dimanche<br><br><strong>Accueil de groupes</strong> : jusqu’à 70 personnes visite de la vieille ville, visite du musée et dégustation de vins avec kougelhof. Possibilité de découvrir également le sentier viticole."
     }
   },
+  "admin": {
+    "ordersTitle": "Gestion des commandes"
+  },
   "common": {
     "loading": "Chargement...",
     "retry": "Réessayer",

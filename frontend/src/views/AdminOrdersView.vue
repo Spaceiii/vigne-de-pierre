@@ -8,7 +8,7 @@
     <div v-else class="orders-list">
       <div v-for="order in orders" :key="order.id" class="order-card">
         <div class="order-header">
-          <div class="order-info">
+          <div class="order-info" @click="goToOrderDetail(order.id)">
             <h3>{{ t('order.number', { id: order.id }) }}</h3>
             <p class="order-date">{{ formatDate(order.createdAt) }}</p>
           </div>
@@ -40,6 +40,7 @@ import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { fetchAllOrders, updateOrderStatus } from '@/services/orderService.ts';
 import type { Order } from '@/types/order';
+import router from '@/router'
 
 const { t } = useI18n();
 const orders = ref<Order[]>([]);
@@ -55,7 +56,11 @@ const formatDate = (date: string | Date) => {
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat(navigator.language, {
     style: 'currency', currency: 'EUR'
-  }).format(price / 100);
+  }).format(price);
+};
+
+const goToOrderDetail = (orderId: number) => {
+  router.push(`/order/${orderId}`);
 };
 
 const fetchOrders = async () => {

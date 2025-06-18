@@ -249,5 +249,8 @@
     "translation": "翻訳",
     "show_create_form": "作成フォームを表示",
     "hide_create_form": "作成フォームを非表示"
+  },
+  "admin": {
+    "ordersTitle": "注文管理"
   }
 }

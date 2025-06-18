@@ -47,7 +47,6 @@ const fetchOrderDetails = async () => {
   error.value = null
 
   try {
-    // Check if user is authenticated
     if (!authStore.user) {
       router.push('/login')
       return
@@ -77,6 +76,11 @@ const fetchOrderDetails = async () => {
 
 // Go back to order history
 const goBack = () => {
+  if (authStore.user && authStore.user.isAdmin) {
+    router.push('/admin/orders')
+    return
+  }
+
   router.push('/orders')
 }
 

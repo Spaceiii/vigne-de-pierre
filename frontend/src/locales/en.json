@@ -387,5 +387,8 @@
     "translation": "Translation",
     "show_create_form": "Show creation form",
     "hide_create_form": "Hide creation form"
+  },
+  "admin": {
+    "ordersTitle": "Order Management"
   }
 }
