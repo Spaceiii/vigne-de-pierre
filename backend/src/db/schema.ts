@@ -1,10 +1,11 @@
-import { boolean, integer, pgTable, text, varchar, timestamp } from 'drizzle-orm/pg-core'
+import { boolean, integer, pgTable, text, varchar, timestamp, decimal } from 'drizzle-orm/pg-core'
 
 const orderTable = pgTable("order", {
     id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
     userId: integer("user_id").notNull().references(() => userTable.id),
     status: varchar("status", { length: 50 }).notNull().default('pending'),
-    totalPrice: integer("total_price").notNull(),
+    // précision for total_price is set to 10 digits before the decimal and 2 digits after
+    totalPrice: decimal("total_price", { precision: 10, scale: 2 }).notNull(),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     updatedAt: timestamp("updated_at").notNull().defaultNow(),
     pickupInfo: text("pickup_info").notNull(),
@@ -17,7 +18,7 @@ const orderItemTable = pgTable("order_item", {
     orderId: integer("order_id").notNull().references(() => orderTable.id),
     wineSlug: varchar("wine_slug", { length: 255 }).notNull().references(() => wineTable.slug),
     quantity: integer("quantity").notNull(),
-    price: integer("price").notNull(),
+    price: decimal("price", { precision: 10, scale: 2 }).notNull(),
 })
 
 const rangeTable = pgTable("range", {
